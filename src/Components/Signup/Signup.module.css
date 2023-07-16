@@ -51,6 +51,7 @@
 .span {
   color: lightblue;
   margin-left: 5px;
+  cursor: pointer;
 }
 .error {
   color: red;

@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { LoginPage } from "./Components/Login/LoginPage";
 import SignupPage from "./Components/Signup/SignupPage";
+import UserProfile from "./Components/UserProfile/UserProfile";
+import BloodDonor from "./Components/Blood-Donor/Blood-Donor";
 
 const route = createBrowserRouter([
   {
@@ -15,7 +17,9 @@ const route = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <SignupPage />,
+        // element: <SignupPage />,
+        // element:<UserProfile/>,
+        element:<BloodDonor/>
       },
       {
         path: "signup",
@@ -25,6 +29,14 @@ const route = createBrowserRouter([
         path: "login",
         element: <LoginPage />,
       },
+      {
+        path:"userprofile",
+        element:<UserProfile/>
+      },
+      {
+        path:"blood-donor",
+        element:<BloodDonor/>
+      }
     ],
   },
 ]);

@@ -12,7 +12,7 @@ export function LoginPage() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  function SubmitHandler(e) {
+  async function SubmitHandler(e) {
     e.preventDefault();
     let isValid = true;
     if (!email) {
@@ -31,9 +31,22 @@ export function LoginPage() {
       setErrorPassword("");
     }
     if (isValid) {
-      console.log("login successful");
+      const res = await fetch("http://10.11.6.27:3000/api/v1/users/login",
+        {
+          method: "Post",
+          body: JSON.stringify({ email , password}),
+          headers: { "Content-type": "application/json" },
+        }
+      );
+      const result = await res.json();
+      console.log(res, result);
+      if (res.ok) {
+        console.log("login successful")
+      } else {
+        setErrorPassword(result.message);
+      }
     } else {
-      console.log("login unsuccessful");
+      console.log("login unsuccessful")
     }
   }
 

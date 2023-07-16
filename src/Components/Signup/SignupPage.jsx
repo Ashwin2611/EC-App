@@ -9,7 +9,7 @@ export default function SignUpPage() {
   const currentOfYear = new Date().getFullYear() % 100;
   const yearofStudy = currentOfYear - joinInYear + 1;
 
-  function handleSignUp(e) {
+  async function handleSignUp(e) {
     e.preventDefault();
     let isValid = true;
     if (!email) {
@@ -25,7 +25,21 @@ export default function SignUpPage() {
       setError("");
     }
     if (isValid) {
-      navigate("/login");
+      const res = await fetch(
+        "http://10.11.6.27:3000/api/v1/users/signupemail",
+        {
+          method: "Post",
+          body: JSON.stringify({ email }),
+          headers: { "Content-type": "application/json" },
+        }
+      );
+      const result = await res.json();
+      console.log(res, result);
+      if (res.ok) {
+        navigate("/login");
+      } else {
+        setError(result.message);
+      }
     }
   }
   function routeHandler() {
