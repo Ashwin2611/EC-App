@@ -1,0 +1,102 @@
+
+.instagram-post {
+  position: relative;
+  left:35%;
+  margin-top:3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  height: auto; /* Set the desired height */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  /* object-fit: fill; */
+}
+
+
+  .post-header {
+    display: flex;
+    align-items: start;
+    margin-bottom: 10px;
+  }
+  
+  .profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .username {
+    position:relative;
+    right:280%;
+    bottom:80px;
+    font-weight: bold;
+
+  }
+  
+  .post-image {
+    width: 30rem;
+    height: auto; 
+    object-fit: fill;
+    margin-bottom: 10px;
+  }
+  
+  .clubName{
+    margin-top:3%;
+    margin-right:90%;
+    align-items: start;
+    margin-bottom:10px;
+  }
+  .post-caption {
+    position:relative;
+    right:11%;
+    text-align: start;
+    font-size: 14px;
+    /* border: 1px solid red; */
+    width: 75%;
+    height: auto;
+  }
+  
+  .post-actions {
+    position:relative;
+    bottom:25px;
+    display: flex;
+    margin-left:70%;
+    gap:18px;
+    /* padding:30px; */
+    /* margin-top: 10px; */
+    /* margin-bottom:25%; */
+  }
+  
+  .heart{
+    height:20px;
+    width: 20px;
+  }
+  
+  .likes-count {
+    position:relative;
+    bottom:10px;
+    right:43%;
+    font-weight: bold;
+  }
+
+  .comment-section{
+    height: 35px;
+    width: 50%;
+    border:none;
+    border: 2px solid rgb(197, 197, 197);
+    border-radius: 15px;
+    padding-left:10px;
+    outline: black;
+  }
+  
+  .comment-section::placeholder {
+    color: #999;
+    font-size: 14px;
+  }
+  

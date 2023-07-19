@@ -36,7 +36,11 @@ export default function SignUpPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
-        navigate("/login");
+        navigate("/OTPVerification",{
+          state:{
+            email: email
+          }
+        });
       } else {
         setError(result.message);
       }
@@ -57,7 +61,7 @@ export default function SignUpPage() {
       />
       {error && <p className={style.error}>{error}</p>}
       <button className={style.button} type="submit">
-        SignUp
+        Submit
       </button>
       <p className={style.para}>
         Already have an account?

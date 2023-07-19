@@ -12,7 +12,7 @@ export function LoginPage() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  async function SubmitHandler(e) {
+  async function SubmitHandler(e,{Email}) {
     e.preventDefault();
     let isValid = true;
     if (!email) {
@@ -42,6 +42,7 @@ export function LoginPage() {
       console.log(res, result);
       if (res.ok) {
         console.log("login successful")
+        Email(email)
       } else {
         setErrorPassword(result.message);
       }

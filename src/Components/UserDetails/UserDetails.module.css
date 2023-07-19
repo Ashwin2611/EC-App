@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Google Sans, Helvetica Neue, sans-serif;
+  }
+  
+  .userprofilecontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .choosemember{
+    display:flex;
+    gap:10%;
+    margin-top:5%;
+  }
+
+  .user{
+    /* margin-top: 10%; */
+    font-size: 20px;
+  }
+
+  .forms {
+    position: relative;
+    top: 20%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .userdata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: rgba(133, 132, 132, 0.23); */
+  }
+  
+  .fieldWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+    gap: 10%;
+  }
+  .departmentlabel{
+    margin-top:12%;
+    font-size: 18px;
+    color:rgb(132, 131, 131);
+    margin-left:12px;
+  }
+  .inputfield,
+  .Position {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    padding: 5px;
+    padding-bottom: 10px;
+  }
+  
+  .inputfield {
+    width: 200%;
+    margin-top: 10%;
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid rgb(136, 136, 136);
+    outline: none;
+    font-size: 18px;
+  }
+  
+  .inputfield::placeholder {
+    font-size: 18px;
+  }
+
+  .email{
+    position:relative;
+    left:0%;
+    width: 350%;
+    padding-right:20%;
+  }
+  
+  .department {
+    position:relative;
+    right:1%;
+    width: 300%;
+    height: 40px;
+    margin-top: 11%;
+    margin-bottom: 10px;
+    /* margin-right:30%; */
+    padding-left: 10px;
+    border: none;
+    background-color: rgb(228, 228, 228);
+    border-radius: 20px;
+  }
+  
+  .Position {
+    width: 180%;
+    height: 40px;
+    margin-top: 10%;
+    border: none;
+    border-bottom: 2px solid rgb(136, 136, 136);
+    font-size: 18px;
+    outline: none;
+  }
+  
+  .Donor {
+    margin-right: 10px;
+    width: 400px;
+    margin-top: 13%;
+    margin-bottom: 20px;
+    border: 1px solid red;
+    transform: scale(1.5);
+  }
+  
+  .span {
+    margin-top: 13%;
+    white-space: nowrap;
+  }
+  
+  .button {
+    margin-top: 5%;
+    height: 35px;
+    width: 150px;
+    padding: 5px 40px;
+    background-color: rgb(226, 224, 224);
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    margin-bottom: 3%;
+  }
+  
+  .BloodGrp{
+    margin-left:250%;
+    margin-top:10%;
+    height: 30px;
+    width: 90px;
+    border:none;
+    border-radius:20px;
+    background-color: rgb(228, 228, 228);
+    padding-left:10px;
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 768px) {
+    .userprofilecontainer {
+      align-items: flex-start;
+    }
+  
+    .forms {
+      top: 10%;
+      left: 10%;
+    }
+  
+    .fieldWrapper {
+      flex-direction: column;
+      padding: 0;
+      gap: 5%;
+    }
+  
+    .inputfield,
+    .department,
+    .Position {
+      width: 100%;
+    }
+  
+    .Donor {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .forms {
+      top: 5%;
+      left: 5%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .userprofilecontainer {
+      align-items: flex-start;
+    }
+  
+    .forms {
+      top: initial;
+      left: initial;
+      align-items: flex-start;
+      padding: 0 20px;
+    }
+  
+    .fieldWrapper {
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+    }
+  
+    .inputfield,
+    .Position {
+      width: 100%;
+    }
+  
+    .department {
+      right: initial;
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .Donor {
+      width: 100%;
+      transform: scale(1);
+    }
+  
+    .span {
+      margin-top: 20px;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .BloodGrp {
+      margin-left: initial;
+      margin-top: 20px;
+    }
+  }
+  
