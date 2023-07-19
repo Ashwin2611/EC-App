@@ -40,10 +40,11 @@
   }
   
   .post-image {
-    width: 30rem;
+    width: 28rem;
     height: auto; 
     object-fit: fill;
     margin-bottom: 10px;
+    border-radius: 10px;
   }
   
   .clubName{
@@ -64,7 +65,7 @@
   
   .post-actions {
     position:relative;
-    bottom:25px;
+    bottom:40px;
     display: flex;
     margin-left:70%;
     gap:18px;

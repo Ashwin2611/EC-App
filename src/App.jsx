@@ -24,8 +24,8 @@ const route = createBrowserRouter([
       {
         index: true,
         // element: <SignupPage />,
-        // element:<UserDetails/>
-        element:<UserProfile/>,
+        element:<UserDetails/>
+        // element:<UserProfile/>,
         // element:<BloodDonor/>,
         // element:<OTPVerification/>
       },

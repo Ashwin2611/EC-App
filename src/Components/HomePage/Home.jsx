@@ -42,7 +42,9 @@ export default function Home(){
     return(
         <div className={style.container}>
             <Sidebar/>
-            {arraylist.map((clubs)=><Post clubs={clubs}/>)}
+            <div className={style.Post}>
+                {arraylist.map((clubs)=><Post clubs={clubs}/>)}
+            </div>
             {/* <Post/> */}
         </div>
     )

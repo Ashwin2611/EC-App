@@ -33,7 +33,7 @@ export default function OTPVerification(){
               value={otp}
               onChange={setOtp}
               OTPLength={4}
-              otpType="number"
+              otpType="Number"
               disabled={false}
               autoFocus
               className={style.otp}
