@@ -1,5 +1,6 @@
 import React from 'react';
 import style from "./Post.module.css"
+import LargeMessage from './LargeMessage';
 import { useState } from 'react';
 
 export default function Post({clubs}) {
@@ -24,11 +25,9 @@ export default function Post({clubs}) {
         
       </div>
       <img className={style["post-image"]} src={clubs.images} alt="Post" />
-      {/* <span className={style.username}>JohnDoe</span> */}
+      <img src='./src/assets/NSSlogo.jpg'className={style.icon} height={30}/>
       <p className={style.clubName}>{clubs.club}</p>
-      <div className={style["post-caption"]}>
-        {clubs.comments}
-      </div>
+      <LargeMessage  className={style["post-caption"]} message={clubs.comments} maxCharCount={100}/>
       <div className={style["post-actions"]}>
         <span className={style["heart"]} onClick={handler}>
             {heart ? <img src='./src/assets/heart.png' height={28}/> : <img src='./src/assets/colorlessHeart.png' height={30}/>}

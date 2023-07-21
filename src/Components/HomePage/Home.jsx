@@ -4,9 +4,9 @@ import style from './Home.module.css'
 
 const arraylist=[
     {
-    club:'NSS',
-    images:'https://jamiasalafiyapharmacycollege.com/public/img/nss.jpg',
-    comments:'I will never compromise on the values and principles that guide me as an NCC cadet'
+        club:'NSS',
+        images:'https://jamiasalafiyapharmacycollege.com/public/img/nss.jpg',
+        comments:'I will never compromise on the values and principles that guide me as an NCC cadet'
     },
     {
         club:'NSS',

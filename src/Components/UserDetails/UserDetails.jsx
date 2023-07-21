@@ -1,10 +1,12 @@
 import { useState } from "react";
 import style from "./UserDetails.module.css";
+import { useNavigate } from "react-router-dom";
 export default function UserDetails() {
+  const Navigate=useNavigate()
   const [blood, setBlood] = useState(false);
-  const [user, setUser] = useState(false);
+  const [users, setUsers] = useState("");
   const [fields, setFields] = useState({
-    user: user,
+    role: "",
     firstName: "",
     lastName: "",
     department: "",
@@ -20,6 +22,7 @@ export default function UserDetails() {
   //   setBlood((blood)=>!blood)
   // }
 
+
   function SubmitHandler(e) {
     e.preventDefault();
     const {name,value}=e.target;
@@ -32,25 +35,47 @@ export default function UserDetails() {
       }))
     }
     else{
+
     setFields((prevData)=>({
         ...prevData,
-        [name]:value,
+        [name]:value
       }))
     }
+    // console.log(fields)
     }
-  console.log(fields)
+
+   async function onSubmitForm(e)
+   {
+    e.preventDefault()
+    console.log(fields)
+      const response= await fetch("http://10.11.6.27:3000/api/v1/users/user",
+      {
+        method:'PATCH',
+        body:JSON.stringify({...fields}),
+        headers:{"Content-type":"application/json"}
+      })
+      const res=await response.json();
+      if(response.ok){
+        Navigate('/login')
+        console.log("success")
+      }
+      else{
+        console.log("error")
+        console.log(res)
+      }
+    }
+
 
   return (
     <div className={style.userprofilecontainer}>
       <div className={style.datas}>
-        <div className={user ? `${style.choosed}` : `${style.choosmember}`}>
-          <label className={style.user}>Student</label>
-          <input value={fields.user} name="user" type="radio" onChange={SubmitHandler} onClick={() => setUser("Student")} />
-          <label className={style.user}>Staff</label>
-          <input value={fields.user} name="user" type="radio" onChange={SubmitHandler} onClick={() => setUser("Faculty")} />
+        <div className={style.choosed}>
+          <label className={style.users}>Student</label>
+          <input value="Student" name="role"  type="radio"onChange={SubmitHandler}/>
+          <label className={style.users}>Faculty</label>
+          <input value="Faculty" name="role" type="radio" onChange={SubmitHandler}/>
         </div>
-        {true && (
-          <form className={style.forms} onSubmit={SubmitHandler}>
+          <form className={style.forms} onSubmit={onSubmitForm}>
             {/* <img className={style.userprofileimage} src="./src/assets/PngItem_1503945.png" alt="" onClick={()=><Photo/>} /> */}
             <div className={style.userdata}>
               <div className={style.fieldWrapper}>
@@ -128,7 +153,7 @@ export default function UserDetails() {
                 <span className={style.span}>Are You A Blood Donor</span>
                 <input
                   name="bloodDonor"
-                  value={fields.bloodDonor} 
+                  value={blood} 
                   className={style.Donor}
                   type="checkbox"
                   // onClick={SubmitHandler}
@@ -139,21 +164,20 @@ export default function UserDetails() {
                 {blood && (
                   <select name="BloodGroup" value={fields.BloodGroup} className={style.BloodGrp} onChange={SubmitHandler}> 
                     <option value='BloodGrp'>🩸</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
+                    <option value="b+">B+</option>
+                    <option value="b-">B-</option>
+                    <option value="o+">O+</option>
+                    <option value="o-">O-</option>
+                    <option value="ab+">AB+</option>
+                    <option value="ab-">AB-</option>
+                    <option value="a+">A+</option>
+                    <option value="a-">A-</option>
                   </select>
                 )}
               </div>
               <button className={style.button}>Submit</button>
             </div>
           </form>
-        )}
       </div>
     </div>
   );

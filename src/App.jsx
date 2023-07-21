@@ -1,9 +1,5 @@
 import {
-  BrowserRouter,
-  Navigate,
-  Route,
   RouterProvider,
-  Routes,
   createBrowserRouter,
 } from "react-router-dom";
 import { LoginPage } from "./Components/Login/LoginPage";
@@ -14,6 +10,7 @@ import OTPVerification from "./Components/OTPpage/OTPVerification";
 import UserDetails from "./Components/UserDetails/UserDetails";
 import Post from "./Components/PostPage/Post";
 import Home from "./Components/HomePage/Home";
+import ClubRegistration from "./Components/Club-Registration/ClubRegisration";
 
 
 
@@ -24,8 +21,9 @@ const route = createBrowserRouter([
       {
         index: true,
         // element: <SignupPage />,
-        element:<UserDetails/>
+        // element:<UserDetails/>
         // element:<UserProfile/>,
+        element:<ClubRegistration/>
         // element:<BloodDonor/>,
         // element:<OTPVerification/>
       },
@@ -56,6 +54,10 @@ const route = createBrowserRouter([
       {
         path:"userdetails",
         element:<UserDetails/>
+      },
+      {
+        path:"clubregistration",
+        element:<ClubRegistration/>
       }
     ],
   },

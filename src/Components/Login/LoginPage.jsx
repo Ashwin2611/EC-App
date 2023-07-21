@@ -12,7 +12,7 @@ export function LoginPage() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  async function SubmitHandler(e,{Email}) {
+  async function SubmitHandler(e, { Email }) {
     e.preventDefault();
     let isValid = true;
     if (!email) {
@@ -31,23 +31,21 @@ export function LoginPage() {
       setErrorPassword("");
     }
     if (isValid) {
-      const res = await fetch("http://10.11.6.27:3000/api/v1/users/login",
-        {
-          method: "Post",
-          body: JSON.stringify({ email , password}),
-          headers: { "Content-type": "application/json" },
-        }
-      );
+      const res = await fetch("http://10.11.6.27:3000/api/v1/users/login", {
+        method: "Post",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-type": "application/json" },
+      });
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
-        console.log("login successful")
-        Email(email)
+        console.log("login successful");
+        Email(email);
       } else {
         setErrorPassword(result.message);
       }
     } else {
-      console.log("login unsuccessful")
+      console.log("login unsuccessful");
     }
   }
 
@@ -57,57 +55,59 @@ export function LoginPage() {
   }
 
   return (
-    <center>
-      <form className={style.form} onSubmit={SubmitHandler}>
-        <h1 className={style.title}>Login</h1>
-        <input
-          className={style.inputfield}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {errorEmail && (
-          <p className={style.erroremail}>
-            {errorEmail}
-            <FontAwesomeIcon
-              icon={faCircleInfo}
-              className={style.info}
-              data-tip={errorEmail}
-            />
-          </p>
-        )}
+    <div className={style.container}>
+      <center>
+        <form className={style.form} onSubmit={SubmitHandler}>
+          <h1 className={style.title}>Login</h1>
+          <input
+            className={style.inputfield}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errorEmail && (
+            <p className={style.erroremail}>
+              {errorEmail}
+              <FontAwesomeIcon
+                icon={faCircleInfo}
+                className={style.info}
+                data-tip={errorEmail}
+              />
+            </p>
+          )}
 
-        <input
-          className={style.inputfield}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errorPassword && (
-          <p className={style.error}>
-            {errorPassword}
-            <FontAwesomeIcon
-              icon={faCircleInfo}
-              className={style.info}
-              data-tip={errorPassword}
-            />
+          <input
+            className={style.inputfield}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errorPassword && (
+            <p className={style.error}>
+              {errorPassword}
+              <FontAwesomeIcon
+                icon={faCircleInfo}
+                className={style.info}
+                data-tip={errorPassword}
+              />
+            </p>
+          )}
+          {/* <ReactTooltip /> */}
+          {/* {errorEmail} */}
+          <p className={style.para}>
+            Don't have an account?{" "}
+            <span className={style.span} onClick={RouteHandler}>
+              {" "}
+              Create new account
+            </span>
           </p>
-        )}
-        {/* <ReactTooltip /> */}
-        {/* {errorEmail} */}
-        <p className={style.para}>
-          Don't have an account?{" "}
-          <span className={style.span} onClick={RouteHandler}>
-            {" "}
-            Create new account
-          </span>
-        </p>
-        <button className={style.button} type="submit">
-          Login
-        </button>
-      </form>
-    </center>
+          <button className={style.button} type="submit">
+            Login
+          </button>
+        </form>
+      </center>
+    </div>
   );
 }

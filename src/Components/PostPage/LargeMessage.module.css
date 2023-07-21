@@ -1,0 +1,16 @@
+.post-caption {
+    align-self: start;
+    font-size: 14px;
+    width: 80%;
+    height: auto;
+    margin-left:7px;
+    line-height: 20px;
+    /* border: 1px solid red; */
+  }
+  .seemore{
+    border:none;
+    background-color: rgb(220, 220, 220);
+    padding:3px;
+    border-radius: 10px;
+    margin-left:5px;
+  }
