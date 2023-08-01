@@ -15,15 +15,16 @@ export default function ClubRegistration() {
         method: "Get",
         headers: {
           Authorization:
-            "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjIzZGY2ODJhZDE0MzRkMGIwZDc5YSIsImlhdCI6MTY4OTkyOTg1MCwiZXhwIjoxNjkwMDE2MjUwfQ.5qJ1VTeK0o7CvMi48duyQbQ467YP7bwx1pFI_UXx4Qk",
+            "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjI2NjFiNzQ3NjQ0MGYyOGY4OGNjZSIsImlhdCI6MTY5MDc3NzgzNSwiZXhwIjoxNjk4NTUzODM1fQ.uquoe17Q6r8id_BnGzhMvXBgjI_6x4iMa96UmwmvbTs",
         },
       });
       const res = await response.json();
-      const { clubs, userClubList } = res.data;
-      const dummy = clubs.filter(
-        (club) => !userClubList.includes(club.clubName)
-      );
-      setClubs(dummy);
+      console.log(res)
+      const {userNotJoinedClubList} = res.data;
+      // const dummy = clubs.filter(
+      //   (club) => !userClubList.includes(club.clubName)
+      // );
+      setClubs(userNotJoinedClubList);
       setIsClub(true);
     }
     Club();
@@ -49,7 +50,7 @@ export default function ClubRegistration() {
       method: "PATCH",
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjIzZGY2ODJhZDE0MzRkMGIwZDc5YSIsImlhdCI6MTY4OTkyOTg1MCwiZXhwIjoxNjkwMDE2MjUwfQ.5qJ1VTeK0o7CvMi48duyQbQ467YP7bwx1pFI_UXx4Qk",
+          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjI2NjFiNzQ3NjQ0MGYyOGY4OGNjZSIsImlhdCI6MTY5MDc3NzgzNSwiZXhwIjoxNjk4NTUzODM1fQ.uquoe17Q6r8id_BnGzhMvXBgjI_6x4iMa96UmwmvbTs",
         "Content-type": "application/json",
       },
       body: JSON.stringify({
@@ -59,6 +60,11 @@ export default function ClubRegistration() {
     const data = await response.json();
     if (response.ok) {
       console.log(data);
+      alert("Registration successful")
+      const dummy = clubs.filter(
+        (club) => !clubId.includes(club.clubId)
+      );
+      setClubs(dummy)
     } else {
       console.log("Error");
     }

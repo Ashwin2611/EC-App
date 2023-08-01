@@ -11,7 +11,9 @@ import UserDetails from "./Components/UserDetails/UserDetails";
 import Post from "./Components/PostPage/Post";
 import Home from "./Components/HomePage/Home";
 import ClubRegistration from "./Components/Club-Registration/ClubRegisration";
-
+import MemeberRequest from "./Components/MemberRequest/MemberRequest";
+import NewPost from "./Components/NewPost/NewPost";
+import UserProfileEdit from "./Components/UserProfile/UserProfileEdit"
 
 
 const route = createBrowserRouter([
@@ -23,8 +25,9 @@ const route = createBrowserRouter([
         // element: <SignupPage />,
         // element:<UserDetails/>
         // element:<UserProfile/>,
-        element:<ClubRegistration/>
+        // element:<ClubRegistration/>
         // element:<BloodDonor/>,
+        element:<MemeberRequest/>
         // element:<OTPVerification/>
       },
       {
@@ -58,6 +61,18 @@ const route = createBrowserRouter([
       {
         path:"clubregistration",
         element:<ClubRegistration/>
+      },
+      {
+        path:"memberRequest",
+        element:<MemeberRequest/>
+      },
+      {
+        path:"newPost",
+        element:<NewPost/>
+      },
+      {
+        path:"editProfile",
+        element:<UserProfileEdit/>
       }
     ],
   },

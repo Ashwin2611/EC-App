@@ -11,8 +11,9 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const navigate=useNavigate();
 
-  async function SubmitHandler(e, { Email }) {
+  async function SubmitHandler(e) {
     e.preventDefault();
     let isValid = true;
     if (!email) {
@@ -40,7 +41,8 @@ export function LoginPage() {
       console.log(res, result);
       if (res.ok) {
         console.log("login successful");
-        Email(email);
+        // Email(email);
+        navigate('/clubregistration')
       } else {
         setErrorPassword(result.message);
       }

@@ -1,0 +1,38 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Google Sans, Helvetica Neue, sans-serif;
+}
+
+.head{
+    margin-top:8%;
+    height: 100%;
+    width: 50%;
+    background-color: #e3e4e4;
+    padding:50px;
+    margin-left:33%;
+    padding-left:25px;
+    padding:200px 0px 200px 0px;
+    border-radius: 30px;
+    /* padding-top: 300px; */
+
+}
+.container{
+    height: 70%;
+    width: 50%;
+    display:flex;
+    justify-content: center;
+    /* padding-top:300px; */
+    gap:5%;
+    margin-left:25%;
+
+}
+.container > button {
+    padding:20px;
+    border-radius: 20px;
+    border:none;
+    width: 25rem;
+    background-color: #88BDBC;
+}

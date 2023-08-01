@@ -1,94 +1,85 @@
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./UserProfile.module.css";
-import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 // import profileImage from "./src/assets/PngItem_1503945.png";
 
 export default function UserProfile() {
+  const [user, setUser] = useState({});
+  const [isUser, setIsUser] = useState(false);
+
+  // useEffect(()=>{
+  async function UserData() {
+    const res = await fetch("http://10.11.6.27:3000/api/v1/users/user", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+        "Content-type": "application/json",
+      },
+    });
+    const response = await res.json();
+    try {
+      if (res.ok) {
+        console.log(response.data);
+        // await Promise.all()
+        setUser(response.data.user);
+        if(user.length>0){
+          setIsUser(true)
+        }
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  // },[])
+  useEffect(() => {
+    UserData();
+  }, []);
+  // useEffect(() => {
+  //   setIsUser(user.length > 0);
+  // }, [user]);
   return (
     <div className={style.userprofilecontainer}>
       <Sidebar />
-    <center>
-      <form className={style.forms}>
-        <img className={style.userprofileimage} src="./src/assets/PngItem_1503945.png" alt="" onClick={()=><Photo/>} />
-        <div className={style.userdata}>
-        <div className={style.fieldWrapper}>
-            <input className={style.inputfield} type="text" placeholder="First Name"/>
-            <input className={style.inputfield} type="text" placeholder="Last Name"/>
-        </div>
-        <div className={style.fieldWrapper}>
-            <select  className={style.department} placeholder="Department">
-                <option disabled value="dept">Department</option>
-                <option value="CSE">CSE</option>
-                <option value="IT">IT</option>
-                <option value="ECE">ECE</option>
-                <option value="EEE">EEE</option>
-                <option value="MECH">MECH</option>
-            </select>
-            <input className={style.inputfield} type="email" placeholder="Email"/>
-        </div>
-        <div className={style.fieldWrapper}>
-            <input className={style.inputfield} type="password" placeholder="Reg No"/>
-            {/* <input className={style.inputfield} type="email" placeholder="Email"/> */}
-            <input className={style.inputfield} type="Number" placeholder="PhoneNo"/>
-        </div>
-        <div className={style.fieldWrapper}>
-            <select  className={style.Position} value="Position" placeholder="Department">
-                <option disabled value="Post">Position</option>
-                <option value="ITA">ITA President</option>
-                <option value="CSI">CSI President</option>
-                <option value="CO">coordinator</option>
-                <option value="NONE">none</option>
-            </select>
-            <br/>
-            {/* <label className={style.label}></label> */}
-            <span className={style.span}>Are You A Blood Donor</span><input className={style.Donor} type="checkbox"/>
-        </div>
-        <div  className={style.fieldWrapper}>
-          <p className={style.register}>Register</p>
-          <p className={style.clubregister}>Club Registration</p>
-        </div>
-            <button className={style.button}>Submit</button>
-        </div>
-      </form>
-      </center>
-    </div>
-  );
-}
-
-
-
-function Photo() {
-  const [profilePhoto, setProfilePhoto] = useState(null);
-
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setProfilePhoto(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  return (
-    <div>
-      <input
-        type="file"
-        id="profilePhotoInput"
-        style={{ display: 'none' }}
-        accept="image/*"
-        onClick={handlePhotoUpload}
-      />
-      <label htmlFor="profilePhotoInput">
+      <div className={style.userdata}>
         <img
-          src={profilePhoto || 'profile-photo.jpg'}
-          alt="Profile Photo"
-          id="profilePhoto"
+          className={style.userprofileimage}
+          src="./src/assets/PngItem_1503945.png"
+          alt=""
+          onClick={() => <Photo />}
         />
-      </label>
+        <div className={style.userdetails}>
+          <div className={style.details}>
+            <label>NAME:</label>
+            <label>EMAIL:</label>
+            <label>DEPARTMENT:</label>
+            <label>PHONE NO:</label>
+            <label>CLUB REGISTRATION:</label>
+          </div>
+              <div className={style.data}>
+                <h3>
+                  {user.firstName} {user.lastName}
+                </h3>
+                <h3>{user.email}</h3>
+                <h3>{user.department}</h3>
+                <h3>{user.phoneNo}</h3>
+                <h3>
+                  <Link to="/clubregistration" className={style.register}>
+                    REGISTER
+                  </Link>
+                </h3>
+              </div>
+            
+        </div>
+      </div>
+      <button className={style.button}>
+        <Link to="/editProfile" className={style.but}>
+          Edit
+        </Link>
+      </button>
     </div>
   );
 }
-
-

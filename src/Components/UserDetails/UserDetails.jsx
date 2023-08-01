@@ -13,7 +13,7 @@ export default function UserDetails() {
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: "",
+    phoneNo: "",
     bloodDonor: blood,
     BloodGroup: "",
   });
@@ -41,7 +41,7 @@ export default function UserDetails() {
         [name]:value
       }))
     }
-    // console.log(fields)
+    console.log(fields)
     }
 
    async function onSubmitForm(e)
@@ -105,7 +105,7 @@ export default function UserDetails() {
                   placeholder="Department"
                   onChange={SubmitHandler}
                 >
-                  <option value="dept">🏬</option>
+                  <option value="dept"></option>
                   <option value="CSE">CSE</option>
                   <option value="IT">IT</option>
                   <option value="ECE">ECE</option>
@@ -142,8 +142,8 @@ export default function UserDetails() {
               </div>
               <div className={style.fieldWrapper}>
                 <input
-                  name="phoneNumber"
-                  value={fields.phoneNumber} 
+                  name="phoneNo"
+                  value={fields.phoneNo} 
                   className={style.Position}
                   type="number"
                   placeholder="Phone Number"

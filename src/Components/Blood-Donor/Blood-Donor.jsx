@@ -13,7 +13,7 @@ export default function BloodDonor() {
       method: "GET",
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjIzZGY2ODJhZDE0MzRkMGIwZDc5YSIsImlhdCI6MTY4OTkyOTg1MCwiZXhwIjoxNjkwMDE2MjUwfQ.5qJ1VTeK0o7CvMi48duyQbQ467YP7bwx1pFI_UXx4Qk",
+          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
         "Content-type": "application/json",
       },
     });
@@ -26,10 +26,10 @@ export default function BloodDonor() {
       console.log("Error");
     }
   };
-  //   console.log(user)
+    console.log(user)
   useEffect(() => {
     apiHandler();
-  }, []);
+  }, [name,department,bloodGroup]);
   return (
     <div>
       <>
@@ -40,16 +40,14 @@ export default function BloodDonor() {
             type="text"
             placeholder="Search"
             onChange={(e) => {
-              setName(() => e.target.value);
-              apiHandler();
+              setName(e.target.value);
             }}
           />
           <select
             className={style.blood}
             name="BloodGroup"
             onChange={(e) => {
-              setBloodGroup(() => e.target.value);
-              apiHandler();
+              setBloodGroup(e.target.value);
             }}
           >
             <option value="">BloodGrp</option>
@@ -65,8 +63,7 @@ export default function BloodDonor() {
           <select
             className={style.department}
             onChange={(e) => {
-              setDepartment(() => e.target.value);
-              apiHandler();
+              setDepartment(e.target.value);
             }}
           >
             <option value="">Department</option>
@@ -79,131 +76,40 @@ export default function BloodDonor() {
         </div>
       </>
       <div className={style.usercontainar}>
-        {/* {user &&
-          user.map((user) => (
-            <div>
-                <img className={style.userimage} src={"./src/assets/PngItem_1503945.png"} alt="Image" height={28} />
-                <h3 className={style.userdata}>{user.firstName} {user.lastName}</h3>
-            </div>
-          ))}
         {user &&
           user.map((user) => (
-            <div>
-                <img className={style.userimage} src={"./src/assets/PngItem_1503945.png"} alt="Image" height={28} />
-                <h3 className={style.userdata}>{user.firstName} {user.lastName}</h3>
+            <div className={style.userdata}>
+              <img
+                className={style.userimage}
+                src={"./src/assets/PngItem_1503945.png"}
+                alt="Image"
+                height={28}
+              />
+              <h3 className={style.name}>
+                {user.firstName} {user.lastName}
+              </h3>
+              <div className={style.details}>
+                {/* <p className={style.depart}>{user.department}</p> */}
+                <p className={style.bloodGrp}>BloodGroup : {user.bloodGroup}</p>
+              </div>
+            </div>
+          ))}
+        {/* {user &&
+          user.map((user) => (
+            <div className={style.userdata}>
+              <img
+                className={style.userimage}
+                src={"./src/assets/PngItem_1503945.png"}
+                alt="Image"
+                height={28}
+              />
+              <h3 className={style.userdata}>
+                {user.firstName} {user.lastName}
+              </h3>
             </div>
           ))} */}
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Ashwin 
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja 
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja 
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja 
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
-        <div className={style.userdata}>
-          <img
-            className={style.userimage}
-            src={"./src/assets/PngItem_1503945.png"}
-            alt="Image"
-            height={50}
-          />
-          <h3 className={style.userdata}>
-            Maharaja S S
-          </h3>
-        </div>
       </div>
     </div>
   );
 }
+ 

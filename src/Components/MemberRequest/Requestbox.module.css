@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Google Sans, Helvetica Neue, sans-serif;
+}
+
+/* .container{
+    width: 15%;
+    display:flex;
+    background-color: #e4e4e4;
+    align-items: center;
+    padding:15px;
+    align-self: center;
+} */
+/* Requestbox.module.css */
+
+.container {
+    height: 100px;
+    width: 70%; 
+    /* border: 1px solid #ccc;  */
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background-color: #e4e4e4; 
+    margin-left: 22%;
+    padding:10px;
+    margin-bottom:25px;
+  }
+  
+  .details {
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+  
+  h3 {
+    margin: 0; 
+  }
+  
+  p {
+    margin: 0; 
+  }
+
+  .decide{
+    position:relative;
+    bottom:60px;
+    left:110px;
+    display: flex;
+    flex-direction: column;
+    justify-self:flex-start;
+    align-self: flex-end;
+    margin-left:80%;
+  }
+
+.decide>button{
+   background-color: #e4e4e4;
+   border:none;
+   width:80px;
+   height: 40px;
+   font-size: 16px;
+}
+  
