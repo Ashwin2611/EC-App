@@ -26,10 +26,10 @@ export default function BloodDonor() {
       console.log("Error");
     }
   };
-    console.log(user)
+  console.log(user);
   useEffect(() => {
     apiHandler();
-  }, [name,department,bloodGroup]);
+  }, [name, department, bloodGroup]);
   return (
     <div>
       <>
@@ -85,12 +85,19 @@ export default function BloodDonor() {
                 alt="Image"
                 height={28}
               />
-              <h3 className={style.name}>
-                {user.firstName} {user.lastName}
-              </h3>
-              <div className={style.details}>
-                {/* <p className={style.depart}>{user.department}</p> */}
-                <p className={style.bloodGrp}>BloodGroup : {user.bloodGroup}</p>
+                <h3 className={style.name}>
+                  {user.firstName} {user.lastName}
+                </h3>
+              <div className={style.Userdetails}>
+                <div className={style.details}>
+                  {/* <p className={style.depart}>{user.department}</p> */}
+                  <p className={style.bloodGrp}>
+                    BloodGroup : {user.bloodGroup}
+                  </p>
+                </div>
+                <div>
+                  <p className={style.phoneNo}>Phone No : {user.phoneNo}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -112,4 +119,3 @@ export default function BloodDonor() {
     </div>
   );
 }
- 

@@ -26,7 +26,7 @@ export default function SignUpPage() {
     }
     if (isValid) {
       const res = await fetch(
-        "http://10.11.6.27:3000/api/v1/users/signupemail",
+        "http://10.11.6.27:3000/api/v1/auth/signupemail",
         {
           method: "Post",
           body: JSON.stringify({ email }),

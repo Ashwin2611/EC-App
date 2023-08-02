@@ -14,6 +14,8 @@ import ClubRegistration from "./Components/Club-Registration/ClubRegisration";
 import MemeberRequest from "./Components/MemberRequest/MemberRequest";
 import NewPost from "./Components/NewPost/NewPost";
 import UserProfileEdit from "./Components/UserProfile/UserProfileEdit"
+import TextPost from "./Components/NewPost/TextPost";
+import ImagePost from "./Components/NewPost/ImagePost";
 
 
 const route = createBrowserRouter([
@@ -73,6 +75,14 @@ const route = createBrowserRouter([
       {
         path:"editProfile",
         element:<UserProfileEdit/>
+      },
+      {
+        path:"textPost",
+        element:<TextPost/>
+      },
+      {
+        path:"imagePost",
+        element:<ImagePost/>
       }
     ],
   },

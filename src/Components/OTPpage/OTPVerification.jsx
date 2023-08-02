@@ -12,7 +12,7 @@ export default function OTPVerification(){
   // console.log(otp)
  async function Handler(){
   const password=otp;
-    const response=await fetch("http://10.11.6.27:3000/api/v1/users/signuppassword",
+    const response=await fetch("http://10.11.6.27:3000/api/v1/auth/signuppassword",
     {
       method:"Post",
       body:JSON.stringify({password,email}),

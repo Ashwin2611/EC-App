@@ -11,7 +11,7 @@ export default function ClubRegistration() {
 
   useEffect(() => {
     async function Club() {
-      const response = await fetch("http://10.11.6.27:3000/api/v1/users/club", {
+      const response = await fetch("http://10.11.6.27:3000/api/v1/clubs/club", {
         method: "Get",
         headers: {
           Authorization:
@@ -46,7 +46,7 @@ export default function ClubRegistration() {
   async function SubmitHandler(e) {
     e.preventDefault();
     console.log(clubId);
-    const response = await fetch("http://10.11.6.27:3000/api/v1/users/club", {
+    const response = await fetch("http://10.11.6.27:3000/api/v1/clubs/club", {
       method: "PATCH",
       headers: {
         Authorization:

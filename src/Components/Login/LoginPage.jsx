@@ -32,7 +32,7 @@ export function LoginPage() {
       setErrorPassword("");
     }
     if (isValid) {
-      const res = await fetch("http://10.11.6.27:3000/api/v1/users/login", {
+      const res = await fetch("http://10.11.6.27:3000/api/v1/auth/login", {
         method: "Post",
         body: JSON.stringify({ email, password }),
         headers: { "Content-type": "application/json" },

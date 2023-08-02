@@ -8,8 +8,16 @@ export default function NewPost() {
       <Sidebar />
       <div className={style.head}>
         <div className={style.container}>
-          <button onClick={navigate('/textPost')}>Text Post</button>
-          <button onClick={navigate('/imagePost')}>Image Post</button>
+          <button onClick={()=>navigate('/textPost',{
+            state:{
+              format:"text"
+            }
+          })}>Text Post</button>
+          <button onClick={()=>navigate('/imagePost',{
+            state:{
+              format:"image"
+            }
+          })}>Image Post</button>
         </div>
       </div>
     </>
