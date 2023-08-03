@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./ImagePost.module.css";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function ImagePost() {
   const [image, setImage] = useState();
@@ -10,6 +11,7 @@ export default function ImagePost() {
   const [useimg, setUseimg] = useState(null);
   const [mode, setMode] = useState(false);
 
+  const user=useSelector((state)=>state.user.value)
   const location = useLocation();
   const format = location.state.format;
   console.log(format);
@@ -28,7 +30,7 @@ export default function ImagePost() {
       body: data,
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+          `bearer ${user.token}`,
       },
     });
     const res2 = await fetch("http://10.11.6.27:3000/api/v1/posts/postDetail", {
@@ -43,7 +45,7 @@ export default function ImagePost() {
       }),
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+          `bearer ${user.token}`,
         "Content-Type": "application/json",
       },
     });

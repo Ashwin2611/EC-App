@@ -2,9 +2,11 @@ import Sidebar from "../Sidebar/Sidebar";
 import style from "./UserProfile.module.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 // import profileImage from "./src/assets/PngItem_1503945.png";
 
 export default function UserProfile() {
+  const users=useSelector((state)=>state.user.value)
   const [user, setUser] = useState({});
   const [isUser, setIsUser] = useState(false);
 
@@ -14,7 +16,7 @@ export default function UserProfile() {
       method: "GET",
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+          `bearer ${users.token}`,
         "Content-type": "application/json",
       },
     });

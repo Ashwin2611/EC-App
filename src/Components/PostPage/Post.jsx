@@ -6,7 +6,7 @@ import { useState } from 'react';
 export default function Post({clubs}) {
     const[heart,setheart]=useState(false)
     const[likes,setLikes]=useState(0);
-    console.log(clubs.club)
+    // console.log(clubs.club)
     
     function handler(){
         setheart((heart)=>!heart)

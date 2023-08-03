@@ -4,14 +4,19 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 // import ReactTooltip from "react-tooltip";
 import style from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { login } from "../features/Store";
+import { useDispatch, useSelector } from "react-redux";
 
 // import FontAwesome from "./FontAwesome";
 export function LoginPage() {
+  const dispatch = useDispatch();
+  // const user=useSelector((state)=>state.user.value)
+  // console.log(user)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   async function SubmitHandler(e) {
     e.preventDefault();
@@ -40,10 +45,22 @@ export function LoginPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
-        console.log(result)
+        // console.log(result)
         console.log("login successful");
-        // Email(email);
-        navigate('/clubregistration')
+        console.log(result.data.adminInClub);
+        localStorage.setItem("value", JSON.stringify(result.token));
+        dispatch(
+          login({
+            token: result.token,
+            adminInClub: result.data.adminInClub,
+            adminInClubCount: result.data.adminInClubCount,
+            committeeInClub:result.data.committeeInClub,
+            committeeInClubCount: result.data.committeeInClubCount,
+            memberInCount:result.data.memberInCount,
+            memberInClubCount:result.data.memberInClubCount
+          })
+        );
+        navigate("/home");
       } else {
         setErrorPassword(result.message);
       }

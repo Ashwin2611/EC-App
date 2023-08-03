@@ -2,11 +2,13 @@ import { useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./TextPost.module.css";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 export default function TextPost() {
   const location = useLocation();
   const format = location.state.format;
   console.log(format);
 
+  const user=useSelector((state)=>state.user.value)
   const [text, setText] = useState("");
   const [caption, setCaption] = useState("");
   const [tag, setTag] = useState("");
@@ -25,7 +27,7 @@ export default function TextPost() {
       }),
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+          `bearer ${user.token}`,
         "Content-Type": "application/json",
       },
     });

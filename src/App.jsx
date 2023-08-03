@@ -16,7 +16,6 @@ import NewPost from "./Components/NewPost/NewPost";
 import UserProfileEdit from "./Components/UserProfile/UserProfileEdit"
 import TextPost from "./Components/NewPost/TextPost";
 import ImagePost from "./Components/NewPost/ImagePost";
-import { userContext } from "./Components/features/Store";
 
 
 const route = createBrowserRouter([
@@ -91,5 +90,5 @@ const route = createBrowserRouter([
 ]);
 export default function App() {
 
-  return <userContext.Provider><RouterProvider router={route} /></userContext.Provider>;
+  return <RouterProvider router={route} />;
 }

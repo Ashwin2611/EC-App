@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./ClubRegistration.module.css";
+import { useSelector } from "react-redux";
 export default function ClubRegistration() {
+  const users=useSelector((state)=>state.user.value)
   const [clubs, setClubs] = useState([]);
   const [isClub, setIsClub] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
@@ -15,7 +17,7 @@ export default function ClubRegistration() {
         method: "Get",
         headers: {
           Authorization:
-            "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjI2NjFiNzQ3NjQ0MGYyOGY4OGNjZSIsImlhdCI6MTY5MDc3NzgzNSwiZXhwIjoxNjk4NTUzODM1fQ.uquoe17Q6r8id_BnGzhMvXBgjI_6x4iMa96UmwmvbTs",
+            `bearer ${users.token}`,
         },
       });
       const res = await response.json();
@@ -50,7 +52,7 @@ export default function ClubRegistration() {
       method: "PATCH",
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjI2NjFiNzQ3NjQ0MGYyOGY4OGNjZSIsImlhdCI6MTY5MDc3NzgzNSwiZXhwIjoxNjk4NTUzODM1fQ.uquoe17Q6r8id_BnGzhMvXBgjI_6x4iMa96UmwmvbTs",
+          `bearer ${users.token}`,
         "Content-type": "application/json",
       },
       body: JSON.stringify({

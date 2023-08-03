@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import Post from '../PostPage/Post'
 import Sidebar from '../Sidebar/Sidebar'
 import style from './Home.module.css'
@@ -39,6 +40,8 @@ const arraylist=[
 
 ]
 export default function Home(){
+    const user=useSelector((state)=>state.user.value)
+    console.log(user.token)
     return(
         <div className={style.container}>
             <Sidebar/>

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Requestbox from "./Requestbox";
+import { useSelector } from "react-redux";
 
 export default function MemberRequest() {
+
+  const user=useSelector((state)=>state.user.value)
   const [members, setMembers] = useState([]);
   const [isMembers, setIsMembers] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +16,7 @@ export default function MemberRequest() {
         const res = await fetch("http://10.11.6.27:3000/api/v1/clubs/request", {
           method: 'GET',
           headers: {
-            Authorization: "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Yzc0NmQxNTFlZjE1YmY4NjY3NjJjYiIsImlhdCI6MTY5MDc4MjY4NCwiZXhwIjoxNjk4NTU4Njg0fQ.mkLF5XVO8C7auR_Aaiu_4E6HDaC3qI9AYjwyb_iz2IM",
+            Authorization: `bearer ${user.token}`,
           }
         });
 

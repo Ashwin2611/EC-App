@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./UserProfileEdit.module.css";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 // import profileImage from "./src/assets/PngItem_1503945.png";
 
 export default function UserProfile() {
+  const user=useSelector((state)=>state.user.value)
   const navigate=useNavigate()
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -26,7 +28,7 @@ export default function UserProfile() {
           }}),
           headers: {
             Authorization:
-              "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+              `bearer ${user.token}`,
             "Content-type": "application/json",
           },
         }

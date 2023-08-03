@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./Blood-Donor.module.css";
+import { useSelector } from "react-redux";
 export default function BloodDonor() {
+  const users=useSelector((state)=>state.user.value)
   const [bloodGroup, setBloodGroup] = useState("");
   const [department, setDepartment] = useState("");
   const [name, setName] = useState("");
@@ -9,11 +11,12 @@ export default function BloodDonor() {
   const apiHandler = async () => {
     const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&department=${department}&bloodGroup=${bloodGroup}`;
     console.log(url);
+    console.log(users.token)
     const response = await fetch(url, {
       method: "GET",
       headers: {
         Authorization:
-          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjYzZGQ3NGEwYjhmZTljYzJhNmYwMiIsImlhdCI6MTY5MDUzNTU0MSwiZXhwIjoxNjk4MzExNTQxfQ.0HlwUM8BjhAZIpqxgcHtV-AhafUQbdp2jplcsNeyITg",
+          `bearer ${users.token}`,
         "Content-type": "application/json",
       },
     });

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import style from "./Requestbox.module.css";
+import { useSelector } from "react-redux";
 export default function Requestbox({
   member: { userId, firstName, lastName, department, clubId, clubName },
 }) {
+  const user=useSelector((state)=>state.user.value)
   const [approvalStatus, setApprovalStatus] = useState(false);
   // console.log(firstName);
   const [isVisible, setIsVisible] = useState(true);
@@ -15,7 +17,7 @@ export default function Requestbox({
         method: "POST",
         headers: {
           Authorization:
-            "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Yzc0NmQxNTFlZjE1YmY4NjY3NjJjYiIsImlhdCI6MTY5MDgwMzQyMywiZXhwIjoxNjk4NTc5NDIzfQ.FLrItOz5pGtjloQ_oFMW8AGXb_51HNJ8kBh3LAe-kZI",
+            `bearer ${user.token}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ approvalStatus }),

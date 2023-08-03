@@ -1,22 +1,24 @@
-// import { createSlice } from "@reduxjs/toolkit"; 
+import { createSlice } from "@reduxjs/toolkit";
 
-// export const user=createSlice({
-//     name:"user",
-//     initialState:{value:{admin:false}},
-//     reducers:{
-//         login:(state,action)=>{
-//             state.value=action.payload
-//         }
-        
-//     }
+export const user = createSlice({
+  name: "user",
+  initialState: {
+    value: {
+      token: "",
+      adminInClub: [],
+      adminInClubCount: 0,
+      committeeInClub: [],
+      committeeInClubCount: 0,
+      memberInCount: [],
+      memberInClubCount:0
+    },
+  },
+  reducers: {
+    login: (state, action) => {
+      state.value = action.payload;
+    },
+  },
+});
 
-// })
-
-// export const {login} = user.actions
-// export default user.reducer
-
-import { createContext } from "react";
-
-const userContext=createContext('Default value');
-
-export {userContext};
+export const { login } = user.actions;
+export default user.reducer;
