@@ -9,7 +9,7 @@
     /* border:1px solid red; */
     height: 50rem;
     width:35rem;
-    background-color: #6dc5bc;
+    background-color: #8cc2bc;
     border-radius: 30px;
     /* #52a79e */
   }
@@ -82,5 +82,6 @@
     margin-right: 2rem;
     background-color: rgb(156, 253, 12);
     border:none;
+    cursor: pointer;
   }
   

@@ -40,6 +40,7 @@ export function LoginPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
+        console.log(result)
         console.log("login successful");
         // Email(email);
         navigate('/clubregistration')

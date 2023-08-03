@@ -14,3 +14,9 @@
 
 // export const {login} = user.actions
 // export default user.reducer
+
+import { createContext } from "react";
+
+const userContext=createContext('Default value');
+
+export {userContext};

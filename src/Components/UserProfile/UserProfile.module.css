@@ -6,15 +6,6 @@
 }
 
 
-.userprofileimage {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-top: 1.5rem;
-  margin-left:35%;
-}
-
 .userdata {
   display: flex;
   flex-direction: column;
@@ -22,10 +13,28 @@
   margin-top:5rem;
   margin-left: 32.5rem;
   width: 50%;
-  background-color: #e4e4e4;
+  background-color:  #a4d8d2;
   border-radius: 30px;
   padding-bottom:25px;
   /* border:1px solid red; */
+}
+.userprofile{
+    background: none;
+}
+.userprofile{
+  margin-top: 1.5rem;
+  margin-left:35%;
+  background: none;
+  background-color: transparent;
+}
+.userprofileimage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+  border: none;
+  background-color: white;
 }
 
 .userdetails {
@@ -38,10 +47,21 @@
   align-items: flex-start;
   margin-top: 5%;
   /* border:1px solid red; */
-  margin-left:11%
+  margin-left:19%;
   /* padding-right:50px; */
 }
+.club{
+  font-size: 20px;
+}
+.clubs{
+  margin-top:2rem;
+  margin-left:13rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:17%;
 
+}
 .details{
   display:flex;
   flex-direction: column;

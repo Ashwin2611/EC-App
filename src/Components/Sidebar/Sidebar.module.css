@@ -67,3 +67,41 @@
   }
 
   
+  /* For screens with a maximum width of 768px (typical tablets and small desktops) */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding-bottom: 0;
+  }
+
+  .sidebar .logout {
+    position: relative;
+    margin-left: 0;
+  }
+}
+
+/* For screens with a minimum width of 769px (large desktops) */
+@media screen and (min-width: 769px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    padding-bottom: 100%;
+  }
+
+  .sidebar .logout {
+    position: fixed;
+    bottom: 20px;
+    margin-left: 60px;
+  }
+}

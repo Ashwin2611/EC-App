@@ -16,6 +16,7 @@ import NewPost from "./Components/NewPost/NewPost";
 import UserProfileEdit from "./Components/UserProfile/UserProfileEdit"
 import TextPost from "./Components/NewPost/TextPost";
 import ImagePost from "./Components/NewPost/ImagePost";
+import { userContext } from "./Components/features/Store";
 
 
 const route = createBrowserRouter([
@@ -24,12 +25,13 @@ const route = createBrowserRouter([
     children: [
       {
         index: true,
+        element:<LoginPage/>
         // element: <SignupPage />,
         // element:<UserDetails/>
         // element:<UserProfile/>,
         // element:<ClubRegistration/>
         // element:<BloodDonor/>,
-        element:<MemeberRequest/>
+        // element:<MemeberRequest/>
         // element:<OTPVerification/>
       },
       {
@@ -89,5 +91,5 @@ const route = createBrowserRouter([
 ]);
 export default function App() {
 
-  return <RouterProvider router={route} />;
+  return <userContext.Provider><RouterProvider router={route} /></userContext.Provider>;
 }

@@ -24,8 +24,8 @@ export default function UserProfile() {
         console.log(response.data);
         // await Promise.all()
         setUser(response.data.user);
-        if(user.length>0){
-          setIsUser(true)
+        if (user.length > 0) {
+          setIsUser(true);
         }
       } else {
         console.log("error");
@@ -45,36 +45,41 @@ export default function UserProfile() {
     <div className={style.userprofilecontainer}>
       <Sidebar />
       <div className={style.userdata}>
+        <div className={style.userprofile}>
         <img
           className={style.userprofileimage}
           src="./src/assets/PngItem_1503945.png"
           alt=""
-          onClick={() => <Photo />}
+          // onClick={() => <Photo />}
         />
+        </div>
+        
         <div className={style.userdetails}>
           <div className={style.details}>
             <label>NAME:</label>
             <label>EMAIL:</label>
             <label>DEPARTMENT:</label>
             <label>PHONE NO:</label>
-            <label>CLUB REGISTRATION:</label>
           </div>
-              <div className={style.data}>
-                <h3>
-                  {user.firstName} {user.lastName}
-                </h3>
-                <h3>{user.email}</h3>
-                <h3>{user.department}</h3>
-                <h3>{user.phoneNo}</h3>
-                <h3>
-                  <Link to="/clubregistration" className={style.register}>
-                    REGISTER
-                  </Link>
-                </h3>
-              </div>
-            
+          <div className={style.data}>
+            <h3>
+              {user.firstName} {user.lastName}
+            </h3>
+            <h3>{user.email}</h3>
+            <h3>{user.department}</h3>
+            <h3>{user.phoneNo}</h3>
+          </div>
         </div>
       </div>
+      <div className={style.clubs}>
+        <label className={style.club}>CLUB REGISTRATION</label>
+        <h3 className={style.club}>
+          <Link to="/clubregistration" className={style.register}>
+            REGISTER
+          </Link>
+        </h3>
+      </div>
+
       <button className={style.button}>
         <Link to="/editProfile" className={style.but}>
           Edit
