@@ -10,8 +10,10 @@ export default function ImagePost() {
   const [tags, setTags] = useState();
   const [useimg, setUseimg] = useState(null);
   const [mode, setMode] = useState(false);
+  const user = useSelector((state) => state.user.value);
+  const priviledgedClub = [...user.adminInClub,...user.committeeInClub]
+  const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
 
-  const user=useSelector((state)=>state.user.value)
   const location = useLocation();
   const format = location.state.format;
   console.log(format);
@@ -29,8 +31,7 @@ export default function ImagePost() {
       method: "POST",
       body: data,
       headers: {
-        Authorization:
-          `bearer ${user.token}`,
+        Authorization: `bearer ${user.token}`,
       },
     });
     const res2 = await fetch("http://10.11.6.27:3000/api/v1/posts/postDetail", {
@@ -41,11 +42,10 @@ export default function ImagePost() {
         imgName: useimg[0].name,
         format,
         club: 3,
-        modes:mode
+        modes: mode,
       }),
       headers: {
-        Authorization:
-          `bearer ${user.token}`,
+        Authorization: `bearer ${user.token}`,
         "Content-Type": "application/json",
       },
     });
@@ -95,7 +95,7 @@ export default function ImagePost() {
           />
           <p>Modes</p>
           <div className={style.modes}>
-            <input 
+            <input
               type="radio"
               id="mode"
               name="private"
@@ -105,8 +105,19 @@ export default function ImagePost() {
               }}
             />
             <label htmlFor="mode"> only for private members</label>
+            <div className={style.dropdown}>
+              <select
+                value={clubs.id}
+                onClick={(e) => setClubs(e.target.value)}
+              >
+                {priviledgedClub.map((club) => (
+                  <option value={club.id} onChange={(e)=>setClubs(e.target.value)}>{club.clubName}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
+
         <button className={style.post} onClick={SubmitHandler}>
           ✔️
         </button>

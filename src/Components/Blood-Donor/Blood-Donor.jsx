@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 export default function BloodDonor() {
   const users=useSelector((state)=>state.user.value)
   const [bloodGroup, setBloodGroup] = useState("");
-  const [department, setDepartment] = useState("");
+  // const [department, setDepartment] = useState("");
   const [name, setName] = useState("");
   const [user, setUser] = useState([]);
   const apiHandler = async () => {
-    const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&department=${department}&bloodGroup=${bloodGroup}`;
+    const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
     console.log(url);
     console.log(users.token)
     const response = await fetch(url, {
@@ -32,7 +32,7 @@ export default function BloodDonor() {
   console.log(user);
   useEffect(() => {
     apiHandler();
-  }, [name, department, bloodGroup]);
+  }, [name, bloodGroup]);
   return (
     <div>
       <>
@@ -63,7 +63,7 @@ export default function BloodDonor() {
             <option value="A%2B">A+</option>
             <option value="A-">A-</option>
           </select>
-          <select
+          {/* <select
             className={style.department}
             onChange={(e) => {
               setDepartment(e.target.value);
@@ -75,7 +75,7 @@ export default function BloodDonor() {
             <option value="ECE">ECE</option>
             <option value="EEE">EEE</option>
             <option value="MECH">MECH</option>
-          </select>
+          </select> */}
         </div>
       </>
       <div className={style.usercontainar}>

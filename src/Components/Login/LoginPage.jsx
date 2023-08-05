@@ -57,7 +57,8 @@ export function LoginPage() {
             committeeInClub:result.data.committeeInClub,
             committeeInClubCount: result.data.committeeInClubCount,
             memberInCount:result.data.memberInCount,
-            memberInClubCount:result.data.memberInClubCount
+            memberInClubCount:result.data.memberInClubCount,
+            clubs:result.data.clubs
           })
         );
         navigate("/home");

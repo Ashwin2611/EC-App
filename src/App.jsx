@@ -16,6 +16,7 @@ import NewPost from "./Components/NewPost/NewPost";
 import UserProfileEdit from "./Components/UserProfile/UserProfileEdit"
 import TextPost from "./Components/NewPost/TextPost";
 import ImagePost from "./Components/NewPost/ImagePost";
+import Committee from "./Components/Committee/Commitee";
 
 
 const route = createBrowserRouter([
@@ -84,6 +85,10 @@ const route = createBrowserRouter([
       {
         path:"imagePost",
         element:<ImagePost/>
+      },
+      {
+        path:"committee",
+        element:<Committee />
       }
     ],
   },

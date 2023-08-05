@@ -31,6 +31,11 @@
   justify-content: center;
 }
 
+.dropdown{
+  margin-top:8px;
+
+}
+
 .info{
     color: #254e58;
 }
@@ -119,13 +124,24 @@ input[type="file"] {
   margin-top: 1.5rem;
 }
 
-.post {
-  padding: 15px;
+.post{
+  padding:15px;
   font-size: 18px;
   border-radius: 50px;
   align-self: flex-end;
   margin-right: 2rem;
   background-color: rgb(156, 253, 12);
-  border: none;
+  border:none;
   cursor: pointer;
+  position: relative;
+  bottom:1rem;
+  z-index: 5;
+}
+
+.dropdown > select{
+  margin-top:10px;
+  border:none;
+  background-color: #e2fffc;
+  padding:10px;
+  border-radius: 25px;
 }

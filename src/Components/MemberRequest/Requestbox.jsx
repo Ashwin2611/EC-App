@@ -20,7 +20,7 @@ export default function Requestbox({
             `bearer ${user.token}`,
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ approvalStatus }),
+        body: JSON.stringify({ approvalStatus: isAccept }),
       }
     );
     const result = await res.json();

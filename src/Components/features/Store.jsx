@@ -6,11 +6,12 @@ export const user = createSlice({
     value: {
       token: "",
       adminInClub: [],
-      adminInClubCount: 0,
+      adminInClubCount: null,
       committeeInClub: [],
-      committeeInClubCount: 0,
+      committeeInClubCount: null,
       memberInCount: [],
-      memberInClubCount:0
+      memberInClubCount:null,
+      clubs:[]
     },
   },
   reducers: {

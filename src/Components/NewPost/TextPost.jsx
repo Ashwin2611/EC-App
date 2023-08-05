@@ -13,6 +13,8 @@ export default function TextPost() {
   const [caption, setCaption] = useState("");
   const [tag, setTag] = useState("");
   const [mode, setMode] = useState(false);
+  const priviledgedClub = [...user.adminInClub,...user.committeeInClub]
+  const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
 
   async function SubmitHandler() {
     const res = await fetch("http://10.11.6.27:3000/api/v1/posts/postDetail", {
@@ -65,12 +67,6 @@ export default function TextPost() {
             placeholder="tag...."
             onChange={(e) => setTag(e.target.value)}
           />
-           <select name="clubs"  className={style.clubs} onChange={SubmitHandler}> 
-                    <option value='clubs'></option>
-                    <option value="NSS">NSS</option>
-                    <option value="NCC">NCC</option>
-                    <option value="Fine Arts">Fine Arts</option>
-            </select>
           <p>Modes</p>
           <div className={style.modes}>
             <input
@@ -83,6 +79,16 @@ export default function TextPost() {
               }}
             />
             <label htmlFor="modes"> only for private members</label>
+            <div className={style.dropdown}>
+              <select
+                value={clubs.id}
+                onClick={(e) => setClubs(e.target.value)}
+              >
+                {priviledgedClub.map((club) => (
+                  <option value={club.id} onChange={(e)=>setClubs(e.target.value)}>{club.clubName}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
         <button className={style.post} onClick={SubmitHandler}>

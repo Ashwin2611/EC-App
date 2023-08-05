@@ -28,7 +28,7 @@ export default function OTPVerification(){
   }
     return(
       <div className={style.container}>
-        <h3 className={style.title}>Enter Yout OTP</h3>
+        <h3 className={style.title}>Enter Your OTP</h3>
         <OTPInput
               value={otp}
               onChange={setOtp}

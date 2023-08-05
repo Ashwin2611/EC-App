@@ -1,10 +1,32 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Google Sans, Helvetica Neue, sans-serif;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Google Sans, Helvetica Neue, sans-serif;
+}
 
-.Post{
-    margin-left:10%;
+.Post {
+  margin-left: 10%;
+}
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  margin-left: 5rem;
+  border: none;
+  outline: none;
+  background-color: white;
+}
+.loading {
+  text-align: center;
+}
+
+.dropdown > select {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  height: 2.5rem;
+  border: none;
+  background-color: #e4e4e4;
+  padding: 10px;
+  border-radius: 25px;
 }

@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    line-height: 20px;
+  }
+  
+  .message {
+    margin-top: 5px;
+  }
+  
+  .userName{
+    margin-top: 4px;
+    font-weight: bold;
+  }
+  
+  .userComment{
+    display: flex;
+    flex-direction: column;
+  }
+  
