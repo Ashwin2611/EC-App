@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import FontAwesome from "./FontAwesome";
 export function LoginPage() {
   const dispatch = useDispatch();
+  const admin=useSelector((state)=>state.user.value)
   // const user=useSelector((state)=>state.user.value)
   // console.log(user)
   const [email, setEmail] = useState("");
@@ -37,7 +38,7 @@ export function LoginPage() {
       setErrorPassword("");
     }
     if (isValid) {
-      const res = await fetch("http://10.11.6.27:3000/api/v1/auth/login", {
+      const res = await fetch("https://ecapp.onrender.com/api/v1/auth/login", {
         method: "Post",
         body: JSON.stringify({ email, password }),
         headers: { "Content-type": "application/json" },
@@ -58,10 +59,18 @@ export function LoginPage() {
             committeeInClubCount: result.data.committeeInClubCount,
             memberInCount:result.data.memberInCount,
             memberInClubCount:result.data.memberInClubCount,
-            clubs:result.data.clubs
+            clubs:result.data.clubs,
+            admin:result.data.user.admin,
           })
         );
-        navigate("/home");
+        console.log(result.data.user.admin)
+        if(result.data.user.admin)
+        {
+          navigate("/mainadmin")
+        }
+        else{
+          navigate("/home");
+        }
       } else {
         setErrorPassword(result.message);
       }

@@ -13,7 +13,7 @@ export default function MemberRequest() {
   useEffect(() => {
     const memberListHandler = async () => {
       try {
-        const res = await fetch("http://10.11.6.27:3000/api/v1/clubs/request", {
+        const res = await fetch("https://ecapp.onrender.com/api/v1/clubs/request", {
           method: 'GET',
           headers: {
             Authorization: `bearer ${user.token}`,

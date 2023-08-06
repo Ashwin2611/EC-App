@@ -60,10 +60,22 @@ function Sidebar() {
           <Link
             to="/committee"
             className={`${styles.link} ${
-              location.pathname === "/committe" ? styles.active : " "
+              location.pathname === "/committee" ? styles.active : " "
             }`}
           >
             Committee
+          </Link>
+        ) : (
+          ""
+        )}
+        {user.admin ? (
+          <Link
+            to="/mainadmin"
+            className={`${styles.link} ${
+              location.pathname === "/mainadmin" ? styles.active : " "
+            }`}
+          >
+            Select Club Admin
           </Link>
         ) : (
           ""

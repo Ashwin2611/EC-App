@@ -68,18 +68,18 @@ export default function Post({
 }) {
   const [heart, setheart] = useState(false);
   const [likes, setLikes] = useState(Likes);
-  const [like,setLike] = useState(false)
+  const [like, setLike] = useState(false);
   const postId = _id;
 
   const [comments, setComments] = useState(Comments);
 
   const [comment, setComment] = useState("");
 
-  const user=useSelector((state)=>state.user.value)
+  const user = useSelector((state) => state.user.value);
 
   async function commentHandler() {
     const response = await fetch(
-      "http://10.11.6.27:3000/api/v1/posts/comments",
+      "https://ecapp.onrender.com/api/v1/posts/comments",
       {
         method: "POST",
 
@@ -88,40 +88,78 @@ export default function Post({
           comment,
         }),
 
-        headers:{
-          Authorization:
-          `bearer ${user.token}`,
-        "Content-type": "application/json",
-        }
+        headers: {
+          Authorization: `bearer ${user.token}`,
+          "Content-type": "application/json",
+        },
       }
     );
     const res = await response.json();
-    if(response.ok){
-      console.log(res.data.user)
-      setComments(prevComment => [...prevComment,res.data.user])
+    if (response.ok) {
+      console.log(res.data.user);
+      setComments((prevComment) => [...prevComment, res.data.user]);
     }
-    console.log(res)
+    console.log(res);
   }
 
   const [showComments, setShowComments] = useState(false);
   // console.log(clubs.club)
 
-  function handler() {
-    setheart((heart) => !heart);
-    console.log(heart);
+  async function handler() {
     if (!heart) {
+      setheart(true);
+      console.log(heart)
+      const response = await fetch("https://ecapp.onrender.com/api/v1/posts/like", {
+        method: "POST",
+        body: JSON.stringify({ postId: postId, like: true }),
+        headers: {
+          Authorization: `bearer ${user.token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const res = await response.json();
+      console.log(response);
+      if (response.ok) {
+        console.log(res);
+      } else {
+        console.log(response);
+      }
       setLikes((count) => count + 1);
-      
+      console.log(heart);
+      localStorage.setItem("heart",heart)
+      // setheart(false)
     } else {
+      setheart(false);
+      console.log(heart)
+      const response = await fetch("https://ecapp.onrender.com/api/v1/posts/like", {
+        method: "POST",
+        body: JSON.stringify({ postId: postId, like: false }),
+        headers: {
+          Authorization: `bearer ${user.token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const res = await response.json();
+      if (response.ok) {
+        console.log(res);
+      } else {
+        console.log(response);
+      }
       setLikes((count) => count - 1);
+      localStorage.setItem("heart",heart)
     }
   }
+
   return (
     <div className={style["instagram-post"]}>
       <div className={style["post-header"]}>
         {/* <img className={style["profile-picture"]} src="./src/assets/images.png" alt="Profile" /> */}
       </div>
-      {format==='image' ? <img className={style["post-image"]} src={image} /> : <p className={style.textPost}>{text}</p>}
+      {format === "image" ? (
+        <img className={style["post-image"]} src={image} />
+      ) : (
+        <p className={style.textPost}>{text}</p>
+      )}
 
       <img src="./src/assets/NSSlogo.jpg" className={style.icon} height={30} />
 
@@ -134,7 +172,7 @@ export default function Post({
       />
 
       <div className={style["post-actions"]}>
-        <span className={style["heart"]} onClick={handler}>
+        <span className={style["heart"]} onClick={()=>handler()}>
           {heart ? (
             <img src="./src/assets/heart.png" height={28} />
           ) : (
@@ -144,13 +182,21 @@ export default function Post({
 
         <span className={style["action-icon"]}>
           <img
-            className={showComments && (format==='image' ? style.active : style.textactive) }
+            className={
+              showComments &&
+              (format === "image" ? style.active : style.textactive)
+            }
             src="./src/assets/comment.png"
             height={30}
             onClick={() => setShowComments((show) => !show)}
           />
 
-          <div className={showComments && (format==='image' ? style.comment : style.textcomment)}>
+          <div
+            className={
+              showComments &&
+              (format === "image" ? style.comment : style.textcomment)
+            }
+          >
             {showComments && <p className={style.commentsTitle}>Comments</p>}
             {showComments && comments.map((msg) => <Messages msg={msg} />)}
           </div>
@@ -165,7 +211,12 @@ export default function Post({
           placeholder="comments..."
           onChange={(e) => setComment(e.target.value)}
         />
-        <button className={style.commentButton} onClick={()=>commentHandler()}>post</button>
+        <button
+          className={style.commentButton}
+          onClick={() => commentHandler()}
+        >
+          post
+        </button>
       </div>
     </div>
   );

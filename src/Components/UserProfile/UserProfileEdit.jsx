@@ -17,7 +17,7 @@ export default function UserProfile() {
     e.preventDefault()
     async function EditProfile() {
       const res = await fetch(
-        "http://10.11.6.27:3000/api/v1/users/user/updateDetail",
+        "https://ecapp.onrender.com/api/v1/users/user/updateDetail",
         {
           method: "PATCH",
           body: JSON.stringify({userDetail:{

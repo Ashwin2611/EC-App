@@ -17,7 +17,7 @@ export default function TextPost() {
   const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
 
   async function SubmitHandler() {
-    const res = await fetch("http://10.11.6.27:3000/api/v1/posts/postDetail", {
+    const res = await fetch("https://ecapp.onrender.com/api/v1/posts/postDetail", {
       method: "Post",
       body: JSON.stringify({
         text: text,

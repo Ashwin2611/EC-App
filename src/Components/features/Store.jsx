@@ -11,7 +11,8 @@ export const user = createSlice({
       committeeInClubCount: null,
       memberInCount: [],
       memberInClubCount:null,
-      clubs:[]
+      clubs:[],
+      admin:false
     },
   },
   reducers: {

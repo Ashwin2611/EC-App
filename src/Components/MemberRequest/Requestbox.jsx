@@ -12,7 +12,7 @@ export default function Requestbox({
     // const approvalStatus = true
     setApprovalStatus(isAccept);
     const res = await fetch(
-      `http://10.11.6.27:3000/api/v1/clubs/request/${userId}/${clubId}`,
+      `https://ecapp.onrender.com/api/v1/clubs/request/${userId}/${clubId}`,
       {
         method: "POST",
         headers: {

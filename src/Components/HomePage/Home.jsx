@@ -46,7 +46,7 @@ const arraylist = [
 ];
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [clubs, setClubs] = useState([]);
+  // const [clubs, setClubs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [clubId, setClubId] = useState("");
 
@@ -61,7 +61,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://10.11.6.27:3000/api/v1/posts?clubId=${clubId}`,
+        `https://ecapp.onrender.com/api/v1/posts?clubId=${clubId}`,
         {
           method: "GET",
           headers: { Authorization: `bearer ${users.token}` },
@@ -73,32 +73,32 @@ export default function Home() {
         setPosts(res.data.posts);
         setIsLoading(false);
       } else {
-        console.log(response);
+        console.log(res);
       }
     } catch (err) {
       console.log(err);
     }
   }
+  useEffect(() => {
+    ImageFetch();
+  }, [clubId]);
 
   //   console.log(user.token);
   return (
     <div className={style.container}>
       <Sidebar />
       <div className={style.dropdown}>
-        <select value={clubs.id} onClick={(e) => setClubs(e.target.value)}>
+        <select
+          value={clubId}
+          onClick={(e) => {
+            setClubId(e.target.value);
+          }}
+        >
           {users.clubs.map((club) => (
-            <option
-              value={club.id}
-              onChange={(e) => {
-                return setClubId(e.target.value);
-              }}
-            >
-              {club.clubName}
-            </option>
+            <option value={club.clubId}>{club.clubName}</option>
           ))}
         </select>
       </div>
-
       <div className={style.Post}>
         {isLoading && <h1 className={style.loading}>Loading...</h1>}
         {!isLoading && posts && posts.map((post) => <Post posts={post} />)}

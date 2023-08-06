@@ -11,7 +11,7 @@ export default function ImagePost() {
   const [useimg, setUseimg] = useState(null);
   const [mode, setMode] = useState(false);
   const user = useSelector((state) => state.user.value);
-  const priviledgedClub = [...user.adminInClub,...user.committeeInClub]
+  const priviledgedClub = [...user.adminInClub, ...user.committeeInClub];
   const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
 
   const location = useLocation();
@@ -22,33 +22,38 @@ export default function ImagePost() {
     setImage(URL.createObjectURL(e.target.files[0]));
     setUseimg(e.target.files);
   }
+  // console.log(useimg)
   async function SubmitHandler() {
     console.log(image);
     console.log(useimg);
     const data = new FormData();
     data.append("image", useimg[0]);
-    const res1 = await fetch("http://10.11.6.27:3000/api/v1/posts/", {
+    console.log(data)
+    const res1 = await fetch("https://ecapp.onrender.com/api/v1/posts/", {
       method: "POST",
       body: data,
       headers: {
         Authorization: `bearer ${user.token}`,
       },
     });
-    const res2 = await fetch("http://10.11.6.27:3000/api/v1/posts/postDetail", {
-      method: "POST",
-      body: JSON.stringify({
-        caption: caption,
-        tags: tags,
-        imgName: useimg[0].name,
-        format,
-        club: 3,
-        modes: mode,
-      }),
-      headers: {
-        Authorization: `bearer ${user.token}`,
-        "Content-Type": "application/json",
-      },
-    });
+    const res2 = await fetch(
+      "https://ecapp.onrender.com/api/v1/posts/postDetail",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          caption: caption,
+          tags: tags,
+          imgName: useimg[0].name,
+          format,
+          club: clubs * 1,
+          modes: mode,
+        }),
+        headers: {
+          Authorization: `bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const response = await Promise.all([res1, res2]);
     const data1 = await response[0].json();
@@ -60,6 +65,7 @@ export default function ImagePost() {
       console.log(data1, data2);
     }
   }
+  console.log(clubs);
   return (
     <div>
       <Sidebar />
@@ -111,7 +117,12 @@ export default function ImagePost() {
                 onClick={(e) => setClubs(e.target.value)}
               >
                 {priviledgedClub.map((club) => (
-                  <option value={club.id} onChange={(e)=>setClubs(e.target.value)}>{club.clubName}</option>
+                  <option
+                    value={club.clubId}
+                    onChange={(e) => setClubs(e.target.value)}
+                  >
+                    {club.clubName}
+                  </option>
                 ))}
               </select>
             </div>

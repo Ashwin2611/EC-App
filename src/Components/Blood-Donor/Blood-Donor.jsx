@@ -9,7 +9,7 @@ export default function BloodDonor() {
   const [name, setName] = useState("");
   const [user, setUser] = useState([]);
   const apiHandler = async () => {
-    const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
+    const url = `https://ecapp.onrender.com/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
     console.log(url);
     console.log(users.token)
     const response = await fetch(url, {
