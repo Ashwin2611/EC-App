@@ -12,10 +12,10 @@ export default function Dummy() {
   function Imagehandler(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     setUseimg(e.target.files);
+    // console.log(useimg[0].name);
   }
 
   async function SubmitHandler() {
-    console.log();
     const data = new FormData();
     data.append("image", useimg[0]);
     console.log(data);
@@ -23,23 +23,40 @@ export default function Dummy() {
       "https://ecapp.onrender.com/api/v1/users/user/profileimage",
       {
         method: "PATCH",
-        body: JSON.stringify({ image: data }),
+        body: JSON.stringify({ data }),
         headers: {
           Authorization: `bearer ${user.token}`,
-          "Content-Type": "application/json",
         },
       }
     );
     const res = await response.json();
     if (response.ok) {
       console.log(res);
+      setImageName(useimg[0].name);
+    } else {
+      console.log("error", res);
+    }
+
+    const response1 = await fetch(
+      "https://ecapp.onrender.com/api/v1/users/user/profileimagename",
+      {
+        method: "PATCH",
+        body: JSON.stringify({ originalname: imageName }),
+        headers: {
+          Authorization: `bearer ${user.token}`,
+        },
+      }
+    );
+    const res1 = await response1.json();
+    if (response.ok) {
+      console.log(res1);
     } else {
       console.log("error", res);
     }
   }
   return (
     <div>
-      <Sidebar/>
+      <Sidebar />
       <label className={style.labels}>
         ➕
         <input type="file" name="image" onChange={Imagehandler} />
