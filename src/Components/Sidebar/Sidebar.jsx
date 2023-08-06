@@ -16,18 +16,28 @@ function Sidebar() {
         >
           Home
         </Link>
-        {!user.admin ? <Link
-          to="/blood-donor"
-          className={`${styles.link} ${
-            location.pathname === "/blood-donor" ? styles.active : " "
-          }`}
-        >
-          Blood Donor
-        </Link> : " "}
+        {!user.admin ? (
+          <Link
+            to="/blood-donor"
+            className={`${styles.link} ${
+              location.pathname === "/blood-donor" ? styles.active : " "
+            }`}
+          >
+            Blood Donor
+          </Link>
+        ) : (
+          " "
+        )}
         <Link
           to="/userprofile"
           className={`${styles.link} ${
-            location.pathname === "/userprofile" ? styles.active : `${location.pathname === "/clubregistration" ? styles.active : ' '}`
+            location.pathname === "/userprofile"
+              ? styles.active
+              : `${
+                  location.pathname === "/clubregistration"
+                    ? styles.active
+                    : " "
+                }`
           }`}
         >
           User Profile
@@ -48,7 +58,17 @@ function Sidebar() {
           <Link
             to="/newPost"
             className={`${styles.link} ${
-              location.pathname === "/newPost" ? styles.active : `${location.pathname === "/textPost" ? styles.active : `${location.pathname === "/imagePost" ? styles.active : ' '}`}`
+              location.pathname === "/newPost"
+                ? styles.active
+                : `${
+                    location.pathname === "/textPost"
+                      ? styles.active
+                      : `${
+                          location.pathname === "/imagePost"
+                            ? styles.active
+                            : " "
+                        }`
+                  }`
             }`}
           >
             New Post
@@ -80,6 +100,14 @@ function Sidebar() {
         ) : (
           ""
         )}
+        <Link
+          to="/dummy"
+          className={`${styles.link} ${
+            location.pathname === "/dummy" ? styles.active : " "
+          } `}
+        >
+          dummy
+        </Link>
         <Link to="/login" className={`${styles.link} ${styles.logout}`}>
           Logout
         </Link>

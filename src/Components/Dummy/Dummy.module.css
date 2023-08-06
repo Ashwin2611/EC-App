@@ -1,0 +1,23 @@
+.profile{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 100%;
+    border:black;
+    justify-content: center;
+    align-items: center;
+    /* margin-left:40%; */
+    margin-top:5rem;
+}
+
+.labels{
+    position:relative;
+    left:8rem;
+    bottom:1rem;
+    margin-left:45%;
+}
+
+.button{
+    position:relative;
+    top:5rem;
+    right:6rem;
+}

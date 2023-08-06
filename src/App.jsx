@@ -18,6 +18,7 @@ import TextPost from "./Components/NewPost/TextPost";
 import ImagePost from "./Components/NewPost/ImagePost";
 import Committee from "./Components/Committee/Commitee";
 import MainAdmin from "./Components/MainAdmin/MainAdmin";
+import Dummy from "./Components/Dummy/Dummy";
 
 
 const route = createBrowserRouter([
@@ -27,6 +28,7 @@ const route = createBrowserRouter([
       {
         index: true,
         element:<LoginPage/>
+        // element:<Dummy/>
         // element: <SignupPage />,
         // element:<UserDetails/>
         // element:<UserProfile/>,
@@ -94,6 +96,10 @@ const route = createBrowserRouter([
       {
         path:"mainadmin",
         element:<MainAdmin/>
+      },
+      {
+        path:"/dummy",
+        element:<Dummy/>
       }
     ],
   },
