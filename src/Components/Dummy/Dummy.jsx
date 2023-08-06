@@ -19,39 +19,38 @@ export default function Dummy() {
     const data = new FormData();
     data.append("image", useimg[0]);
     console.log(data);
-    const response = await fetch(
+    const res1 = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user/profileimage",
       {
         method: "PATCH",
-        body: JSON.stringify({ data }),
+        body: data,
         headers: {
           Authorization: `bearer ${user.token}`,
         },
       }
     );
-    const res = await response.json();
-    if (response.ok) {
-      console.log(res);
-      setImageName(useimg[0].name);
-    } else {
-      console.log("error", res);
-    }
-
-    const response1 = await fetch(
+    setImageName(useimg[0].name);
+    console.log(imageName);
+    const res2 = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user/profileimagename",
       {
         method: "PATCH",
         body: JSON.stringify({ originalname: imageName }),
         headers: {
           Authorization: `bearer ${user.token}`,
+          "Content-Type": "application/json",
         },
       }
     );
-    const res1 = await response1.json();
-    if (response.ok) {
-      console.log(res1);
+    const response = await Promise.all([res1, res2]);
+    const data1 = await response[0].json();
+    const data2 = await response[1].json();
+    if (response[0].status === 200) {
+      // isLoading(false);
+      console.log(data1);
+      console.log(data2);
     } else {
-      console.log("error", res);
+      console.log(data1, data2);
     }
   }
   return (

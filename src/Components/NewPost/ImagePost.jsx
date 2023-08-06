@@ -14,7 +14,7 @@ export default function ImagePost() {
   const user = useSelector((state) => state.user.value);
   const priviledgedClub = [...user.adminInClub, ...user.committeeInClub];
   const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
-  const [isLoading,setIsLoading]=useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const location = useLocation();
   const format = location.state.format;
@@ -26,12 +26,12 @@ export default function ImagePost() {
   }
   // console.log(useimg)
   async function SubmitHandler() {
-    setIsLoading(true)
+    setIsLoading(true);
     console.log(image);
     console.log(useimg);
     const data = new FormData();
     data.append("image", useimg[0]);
-    console.log(data)
+    console.log(data);
     const res1 = await fetch("https://ecapp.onrender.com/api/v1/posts/", {
       method: "POST",
       body: data,
@@ -62,7 +62,7 @@ export default function ImagePost() {
     const data1 = await response[0].json();
     const data2 = await response[1].json();
     if (response[0].status === 200) {
-      isLoading(false)
+      isLoading(false);
       console.log(data1);
       console.log(data2);
     } else {
@@ -73,8 +73,8 @@ export default function ImagePost() {
   return (
     <div>
       <Sidebar />
-      { isLoading && <h3 className={style.imagesUpload}>UPLOADING.....</h3> }
-       <div className={style.container}>
+      {isLoading && <h3 className={style.imagesUpload}>UPLOADING.....</h3>}
+      <div className={style.container}>
         <label className={style.postbutton}>
           Click here to Upload
           <input type="file" name="image" onChange={Imagehandler} />
