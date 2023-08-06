@@ -2,32 +2,40 @@ import { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./ClubRegistration.module.css";
 import { useSelector } from "react-redux";
+import LoadingState from "../LoadingState/LoadingState";
 export default function ClubRegistration() {
-  const users=useSelector((state)=>state.user.value)
+  const users = useSelector((state) => state.user.value);
   const [clubs, setClubs] = useState([]);
   const [isClub, setIsClub] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
   const [clubId, setClubId] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   let clubIdList = [];
 
   useEffect(() => {
     async function Club() {
-      const response = await fetch("https://ecapp.onrender.com/api/v1/clubs/club", {
-        method: "Get",
-        headers: {
-          Authorization:
-            `bearer ${users.token}`,
-        },
-      });
+      setIsLoading(true);
+      const response = await fetch(
+        "https://ecapp.onrender.com/api/v1/clubs/club",
+        {
+          method: "Get",
+          headers: {
+            Authorization: `bearer ${users.token}`,
+          },
+        }
+      );
       const res = await response.json();
-      console.log(res)
-      const {userNotJoinedClubList} = res.data;
+      console.log(res);
+      // if (res.ok) {
+      setIsLoading(false);
+      const { userNotJoinedClubList } = res.data;
       // const dummy = clubs.filter(
       //   (club) => !userClubList.includes(club.clubName)
       // );
       setClubs(userNotJoinedClubList);
-      setIsClub(true);
+      // setIsClub(true);
+      // }
     }
     Club();
   }, []);
@@ -36,37 +44,38 @@ export default function ClubRegistration() {
     const { name, checked, value } = e.target;
     console.log(name, checked);
     let items = { ...checkedItems, [name]: checked };
-    setCheckedItems(items)
-    if(checked){
-        setClubId(prev=>[...prev,value*1])
-    }
-    else{
-        setClubId(prevValue => prevValue.filter(prev=>prev!=value*1))
+    setCheckedItems(items);
+    if (checked) {
+      setClubId((prev) => [...prev, value * 1]);
+    } else {
+      setClubId((prevValue) => prevValue.filter((prev) => prev != value * 1));
     }
   };
 
   async function SubmitHandler(e) {
+    setIsLoading(true);
     e.preventDefault();
     console.log(clubId);
-    const response = await fetch("https://ecapp.onrender.com/api/v1/clubs/club", {
-      method: "PATCH",
-      headers: {
-        Authorization:
-          `bearer ${users.token}`,
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        clubs: [...clubId],
-      }),
-    });
+    const response = await fetch(
+      "https://ecapp.onrender.com/api/v1/clubs/club",
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `bearer ${users.token}`,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          clubs: [...clubId],
+        }),
+      }
+    );
     const data = await response.json();
     if (response.ok) {
+      setIsLoading(false);
       console.log(data);
-      alert("Registration successful")
-      const dummy = clubs.filter(
-        (club) => !clubId.includes(club.clubId)
-      );
-      setClubs(dummy)
+      alert("Registration successful");
+      const dummy = clubs.filter((club) => !clubId.includes(club.clubId));
+      setClubs(dummy);
     } else {
       console.log("Error");
     }
@@ -75,24 +84,28 @@ export default function ClubRegistration() {
   return (
     <div>
       <Sidebar />
-      <h3 className={style.name}>Club Registration</h3>
-      <form onSubmit={SubmitHandler}>
-        <div className={style.Clubs}>
-          {isClub &&
-            clubs.map(({ clubId, clubName }) => (
-              <div className={style.club}>
-                <label>{clubName}</label>
-                <input
-                  name={clubName}
-                  value={clubId}
-                  type="checkbox"
-                  checked={checkedItems[clubName] || false}
-                  onChange={handleCheckboxChange}
-                />
-              </div>
-            ))}
+      {isLoading ? (
+        <LoadingState />
+      ) : (
+        <>
+          <h3 className={style.name}>Club Registration</h3>
+          <form onSubmit={SubmitHandler}>
+            <div className={style.Clubs}>
+              {isClub &&
+                clubs.map(({ clubId, clubName }) => (
+                  <div className={style.club}>
+                    <label>{clubName}</label>
+                    <input
+                      name={clubName}
+                      value={clubId}
+                      type="checkbox"
+                      checked={checkedItems[clubName] || false}
+                      onChange={handleCheckboxChange}
+                    />
+                  </div>
+                ))}
 
-          {/* <div className={style.club}>
+              {/* <div className={style.club}>
                     <label>NSS Club</label>
                     <input name="NSS" value={1} type="checkbox" onClick={()=>setClubCheck(()=>!clubCheck.name)}/>
                 </div>
@@ -120,15 +133,16 @@ export default function ClubRegistration() {
                     <label>Linux Club</label>
                     <input name="Linux" value={5} type="checkbox"/>
                 </div> */}
-          <button className={style.button} type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+              <button className={style.button} type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </div>
   );
 }
-
 
 // if (items[name]) {
 //     setClubId((prevData) => [...prevData, value * 1]);

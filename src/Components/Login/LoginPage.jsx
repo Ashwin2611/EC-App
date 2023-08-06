@@ -5,18 +5,21 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import style from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { login } from "../features/Store";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import LoadingState from "../LoadingState/LoadingState"
+
 
 // import FontAwesome from "./FontAwesome";
 export function LoginPage() {
   const dispatch = useDispatch();
-  const admin=useSelector((state)=>state.user.value)
+  // const admin=useSelector((state)=>state.user.value)
   // const user=useSelector((state)=>state.user.value)
   // console.log(user)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const [isLoading,setIsLoading]=useState(false)
   const navigate = useNavigate();
 
   async function SubmitHandler(e) {
@@ -38,6 +41,7 @@ export function LoginPage() {
       setErrorPassword("");
     }
     if (isValid) {
+      setIsLoading(true)
       const res = await fetch("https://ecapp.onrender.com/api/v1/auth/login", {
         method: "Post",
         body: JSON.stringify({ email, password }),
@@ -46,6 +50,7 @@ export function LoginPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
+        setIsLoading(false)
         // console.log(result)
         console.log("login successful");
         console.log(result.data.adminInClub);
@@ -86,7 +91,7 @@ export function LoginPage() {
 
   return (
     <div className={style.container}>
-      <center>
+      {isLoading ? <LoadingState/> :<center>
         <form className={style.form} onSubmit={SubmitHandler}>
           <h1 className={style.title}>Login</h1>
           <input
@@ -137,7 +142,7 @@ export function LoginPage() {
             Login
           </button>
         </form>
-      </center>
+      </center>}
     </div>
   );
 }

@@ -64,6 +64,7 @@ export default function Post({
     text,
     comments: Comments,
     likes: Likes,
+    clubLogo
   },
 }) {
   const [heart, setheart] = useState(false);
@@ -161,7 +162,7 @@ export default function Post({
         <p className={style.textPost}>{text}</p>
       )}
 
-      <img src="./src/assets/NSSlogo.jpg" className={style.icon} height={30} />
+      <img src={clubLogo} className={style.icon} height={30} />
 
       <p className={style.clubName}>{`${clubName} Club`}</p>
 

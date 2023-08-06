@@ -96,3 +96,11 @@
     padding:10px;
     border-radius: 25px;
   }
+
+  .imagesUpload{
+    text-align: center;
+    margin-left:15rem;
+    position:relative;
+    top:15rem;
+    color:#8cc2bc
+  }

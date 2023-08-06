@@ -1,8 +1,7 @@
-
 .instagram-post {
   position: relative;
-  left:35%;
-  margin-top:0%;
+  left: 35%;
+  margin-top: 0%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,29 +13,29 @@
   border-radius: 5px;
   padding: 10px;
   border-radius: 25px;
-  border:1px solid red;
+  border: 1px solid red;
   /* object-fit: fill; */
 }
 
-.commentsTitle{
-  padding-left:10px;
-  padding-top:10px;
+.commentsTitle {
+  padding-left: 10px;
+  padding-top: 10px;
   font-size: 17px;
 }
 
-.textPost{
+.textPost {
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   align-self: flex-start;
   line-height: 30px;
   border-bottom: 1px solid black;
- padding:15px;
+  padding: 15px;
 }
 
 .comment {
   position: absolute;
-  top:-17rem;
+  top: -17rem;
   bottom: 0;
   right: -16px;
   width: 30rem;
@@ -50,9 +49,9 @@
   overflow: auto;
 }
 
-.textcomment{
+.textcomment {
   position: absolute;
-  top:-2rem;
+  top: -2rem;
   bottom: 0;
   right: -16px;
   width: 30rem;
@@ -66,121 +65,120 @@
   overflow: auto;
 }
 
-.active{
-  position:absolute;
+.active {
+  position: absolute;
   bottom: 18rem;
-  left:0rem;
+  left: 0rem;
   background-color: whitesmoke;
 }
 
-.textactive{
-  position:absolute;
+.textactive {
+  position: absolute;
   bottom: 3rem;
-  left:0rem;
+  left: 0rem;
   background-color: whitesmoke;
 }
 
-.commentSection{
-  display:flex;
-  gap:12px;
+.commentSection {
+  display: flex;
+  gap: 12px;
 }
 
-.commentButton{
+.commentButton {
   width: 3rem;
   height: 2rem;
   border-radius: 13px;
-  border:none
+  border: none;
 }
 
-  .post-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .icon {
-    display:flex;
-    align-self: flex-start;
-    position:relative;
-    top:23px;
-  }
-  
-  .post-image {
-    /* width: 28rem; */
-    width: 100%;
-    height: 25rem; 
-    object-fit: fill;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  .clubName{
-    display:flex;
-    align-self: start;
-    /* margin-top:2%; */
-    margin-left:34px;
-    margin-bottom: 7px;
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-  }
-  .post-caption {
-    align-self: start;
-    font-size: 14px;
-    width: 80%;
-    height: auto;
-    margin-left:7px;
-    line-height: 20px;
-    /* border: 1px solid red; */
-  }
-  
-  .post-actions {
-    display:flex;
-    gap:10px;
-    align-self: flex-end;
-    margin-right: 5px;
-    justify-content:space-around ;
-    position:relative;
-    bottom:50px;
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-  }
-  
-  .heart{
-    height:20px;
-    width: 20px;
-  }
-  
-  .likes-count {
-    align-self: start;
-    font-weight: bold;
-    margin-left:8px;
-    position:absolute;
-    bottom: 50px;
-    margin-bottom: 0px;
-  }
+.icon {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
+  top: 23px;
+}
 
-  .comment-section{
-    height: 35px;
-    width: 20rem;
-    border:none;
-    border: 2px solid rgb(197, 197, 197);
-    border-radius: 15px;
-    padding-left:10px;
-    outline: black;
-    /* margin-top: 10px; */
-    /* border:1px solid red; */
-  }
-  
-  .comment-section::placeholder {
-    color: #999;
-    font-size: 14px;
-  }
+.post-image {
+  /* width: 28rem; */
+  width: 100%;
+  height: 25rem;
+  object-fit: fill;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.clubName {
+  display: flex;
+  align-self: start;
+  /* margin-top:2%; */
+  margin-left: 34px;
+  margin-bottom: 7px;
+}
+.post-caption {
+  align-self: start;
+  font-size: 14px;
+  width: 80%;
+  height: auto;
+  margin-left: 10px;
+  line-height: 20px;
+  margin-top: 10px;
+  /* border: 1px solid red; */
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  margin-right: 5px;
+  justify-content: space-around;
+  position: relative;
+  bottom: 50px;
+}
+
+.heart {
+  height: 20px;
+  width: 20px;
+}
+
+.likes-count {
+  align-self: start;
+  font-weight: bold;
+  margin-left: 8px;
+  position: absolute;
+  bottom: 50px;
+  margin-bottom: 0px;
+}
+
+.comment-section {
+  height: 35px;
+  width: 20rem;
+  border: none;
+  border: 2px solid rgb(197, 197, 197);
+  border-radius: 15px;
+  padding-left: 10px;
+  outline: black;
+  /* margin-top: 10px; */
+  /* border:1px solid red; */
+}
+
+.comment-section::placeholder {
+  color: #999;
+  font-size: 14px;
+}
 
 /* Base styles for .instagram-post */
 .instagram-post {

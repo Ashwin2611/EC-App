@@ -4,4 +4,10 @@
     box-sizing: border-box;
     font-family: Google Sans, Helvetica Neue, sans-serif;
 }
+.noUser{
+    text-align: center;
+    margin-left:10rem;
+    margin-top:5rem;
+
+}
 

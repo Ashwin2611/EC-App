@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Requestbox from "./Requestbox";
+import style from "./MemberRequest.module.css";
 import { useSelector } from "react-redux";
-
+import LoadingState from "../LoadingState/LoadingState";
 export default function MemberRequest() {
-
-  const user=useSelector((state)=>state.user.value)
+  const user = useSelector((state) => state.user.value);
   const [members, setMembers] = useState([]);
   const [isMembers, setIsMembers] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,14 +13,19 @@ export default function MemberRequest() {
   useEffect(() => {
     const memberListHandler = async () => {
       try {
-        const res = await fetch("https://ecapp.onrender.com/api/v1/clubs/request", {
-          method: 'GET',
-          headers: {
-            Authorization: `bearer ${user.token}`,
+        const res = await fetch(
+          "https://ecapp.onrender.com/api/v1/clubs/request",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `bearer ${user.token}`,
+            },
           }
-        });
+        );
 
-        const { data: { users } } = await res.json();
+        const {
+          data: { users },
+        } = await res.json();
 
         setMembers(users);
         setIsMembers(true);
@@ -37,14 +42,14 @@ export default function MemberRequest() {
   return (
     <div>
       <Sidebar />
-      <h3>Request Page</h3>
+      {/* <h3>Request Page</h3> */}
       {isLoading ? (
-        <p>Loading...</p>
-      ) : isMembers ? (
+        <LoadingState />
+      ) : (members.length ? (
         members.map((member) => <Requestbox member={member} />)
       ) : (
-        <p>No members found.</p>
-      )}
+        <h1 className={style.noUser}>No members found</h1>
+      ))}
     </div>
   );
 }

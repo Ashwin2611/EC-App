@@ -16,18 +16,18 @@ function Sidebar() {
         >
           Home
         </Link>
-        <Link
+        {!user.admin ? <Link
           to="/blood-donor"
           className={`${styles.link} ${
             location.pathname === "/blood-donor" ? styles.active : " "
           }`}
         >
           Blood Donor
-        </Link>
+        </Link> : " "}
         <Link
           to="/userprofile"
           className={`${styles.link} ${
-            location.pathname === "/userprofile" ? styles.active : " "
+            location.pathname === "/userprofile" ? styles.active : `${location.pathname === "/clubregistration" ? styles.active : ' '}`
           }`}
         >
           User Profile
@@ -48,7 +48,7 @@ function Sidebar() {
           <Link
             to="/newPost"
             className={`${styles.link} ${
-              location.pathname === "/newPost" ? styles.active : " "
+              location.pathname === "/newPost" ? styles.active : `${location.pathname === "/textPost" ? styles.active : `${location.pathname === "/imagePost" ? styles.active : ' '}`}`
             }`}
           >
             New Post

@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./Blood-Donor.module.css";
 import { useSelector } from "react-redux";
+import LoadingState from "../LoadingState/LoadingState"
 export default function BloodDonor() {
   const users=useSelector((state)=>state.user.value)
   const [bloodGroup, setBloodGroup] = useState("");
   // const [department, setDepartment] = useState("");
   const [name, setName] = useState("");
   const [user, setUser] = useState([]);
+  const [isLoading,setIsLoading] =useState(false)
   const apiHandler = async () => {
+    setIsLoading(true)
     const url = `https://ecapp.onrender.com/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
     console.log(url);
     console.log(users.token)
@@ -24,6 +27,7 @@ export default function BloodDonor() {
     if (response.ok) {
       console.log(result.data.user);
       setUser(result.data.user);
+      setIsLoading(false)
       //   console.log(user);
     } else {
       console.log("Error");
@@ -79,7 +83,8 @@ export default function BloodDonor() {
         </div>
       </>
       <div className={style.usercontainar}>
-        {user &&
+      {isLoading ? <LoadingState/> :
+        (user &&
           user.map((user) => (
             <div className={style.userdata}>
               <img
@@ -103,7 +108,7 @@ export default function BloodDonor() {
                 </div>
               </div>
             </div>
-          ))}
+          )))}
         {/* {user &&
           user.map((user) => (
             <div className={style.userdata}>

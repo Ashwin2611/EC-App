@@ -3,15 +3,18 @@ import style from "./UserProfile.module.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import LoadingState from "../LoadingState/LoadingState"
 // import profileImage from "./src/assets/PngItem_1503945.png";
 
 export default function UserProfile() {
   const users=useSelector((state)=>state.user.value)
   const [user, setUser] = useState({});
   const [isUser, setIsUser] = useState(false);
+  const [isLoading,setIsLoading]=useState(false)
 
   // useEffect(()=>{
   async function UserData() {
+    setIsLoading(true)
     const res = await fetch("https://ecapp.onrender.com/api/v1/users/user", {
       method: "GET",
       headers: {
@@ -23,6 +26,7 @@ export default function UserProfile() {
     const response = await res.json();
     try {
       if (res.ok) {
+        setIsLoading(false)
         console.log(response.data);
         // await Promise.all()
         setUser(response.data.user);
@@ -46,6 +50,7 @@ export default function UserProfile() {
   return (
     <div className={style.userprofilecontainer}>
       <Sidebar />
+     {isLoading ? <LoadingState/> : <>
       <div className={style.userdata}>
         <div className={style.userprofile}>
         <img
@@ -73,20 +78,21 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      <div className={style.clubs}>
+     {!users.admin ? <div className={style.clubs}>
         <label className={style.club}>CLUB REGISTRATION</label>
         <h3 className={style.club}>
           <Link to="/clubregistration" className={style.register}>
             REGISTER
           </Link>
         </h3>
-      </div>
+      </div> : " "}
 
       <button className={style.button}>
         <Link to="/editProfile" className={style.but}>
           Edit
         </Link>
       </button>
+      </>}
     </div>
   );
 }

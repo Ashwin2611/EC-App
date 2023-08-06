@@ -1,14 +1,18 @@
 import { useState } from "react";
 import style from "./Requestbox.module.css";
 import { useSelector } from "react-redux";
+import LoadingState from "../LoadingState/LoadingState"
 export default function Requestbox({
   member: { userId, firstName, lastName, department, clubId, clubName },
 }) {
-  const user=useSelector((state)=>state.user.value)
+  const user = useSelector((state) => state.user.value);
   const [approvalStatus, setApprovalStatus] = useState(false);
   // console.log(firstName);
   const [isVisible, setIsVisible] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
   async function StatusHandler(isAccept) {
+    setIsLoading(true)
     // const approvalStatus = true
     setApprovalStatus(isAccept);
     const res = await fetch(
@@ -16,8 +20,7 @@ export default function Requestbox({
       {
         method: "POST",
         headers: {
-          Authorization:
-            `bearer ${user.token}`,
+          Authorization: `bearer ${user.token}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ approvalStatus: isAccept }),
@@ -25,12 +28,13 @@ export default function Requestbox({
     );
     const result = await res.json();
     console.log(result);
-    setIsVisible(false)
+    setIsVisible(false);
+    setIsLoading(false)
   }
 
   return (
     <>
-      {isVisible && (
+      {isLoading ? <LoadingState/> : isVisible && (
         <div className={style.container} id={clubId}>
           <div className={style.details}>
             <h3>Name : {`${firstName} ${lastName}`}</h3>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Post from "../PostPage/Post";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./Home.module.css";
+import LoadingState from "../LoadingState/LoadingState"
 
 const arraylist = [
   {
@@ -100,7 +101,7 @@ export default function Home() {
         </select>
       </div>
       <div className={style.Post}>
-        {isLoading && <h1 className={style.loading}>Loading...</h1>}
+        {isLoading && <LoadingState/>}
         {!isLoading && posts && posts.map((post) => <Post posts={post} />)}
       </div>
       {/* <Post/> */}

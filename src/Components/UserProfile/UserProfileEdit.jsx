@@ -101,37 +101,3 @@ export default function UserProfile() {
     </div>
   );
 }
-
-function Photo() {
-  const [profilePhoto, setProfilePhoto] = useState(null);
-
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setProfilePhoto(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  return (
-    <div>
-      <input
-        type="file"
-        id="profilePhotoInput"
-        style={{ display: "none" }}
-        accept="image/*"
-        onClick={handlePhotoUpload}
-      />
-      <label htmlFor="profilePhotoInput">
-        <img
-          src={profilePhoto || "profile-photo.jpg"}
-          alt="Profile Photo"
-          id="profilePhoto"
-        />
-      </label>
-    </div>
-  );
-}

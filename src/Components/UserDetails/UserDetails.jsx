@@ -1,10 +1,12 @@
 import { useState } from "react";
 import style from "./UserDetails.module.css";
 import { useNavigate } from "react-router-dom";
+import LoadingState from "../LoadingState/LoadingState"
 export default function UserDetails() {
   const Navigate = useNavigate();
   const [blood, setBlood] = useState(false);
   const [users, setUsers] = useState("");
+  const [isLoading,setIsLoading]=useState(false)
   const [fields, setFields] = useState({
     role: "",
     firstName: "",
@@ -43,6 +45,7 @@ export default function UserDetails() {
   async function onSubmitForm(e) {
     e.preventDefault();
     console.log(fields);
+    setIsLoading(true)
     const response = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user",
       {
@@ -53,6 +56,7 @@ export default function UserDetails() {
     );
     const res = await response.json();
     if (response.ok) {
+      setIsLoading(false)
       Navigate("/login");
       console.log("success");
     } else {
@@ -62,6 +66,8 @@ export default function UserDetails() {
   }
 
   return (
+    <>
+    {isLoading && <LoadingState/>}
     <div className={style.userprofilecontainer}>
       <div className={style.datas}>
         <div className={style.choosed}>
@@ -190,5 +196,6 @@ export default function UserDetails() {
         </form>
       </div>
     </div>
+    </>
   );
 }

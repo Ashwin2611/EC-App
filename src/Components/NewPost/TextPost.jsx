@@ -15,8 +15,10 @@ export default function TextPost() {
   const [mode, setMode] = useState(false);
   const priviledgedClub = [...user.adminInClub,...user.committeeInClub]
   const [clubs, setClubs] = useState(priviledgedClub[0].clubId);
+  const [isLoading,setIsLoading]=useState(false)
 
   async function SubmitHandler() {
+    setIsLoading(true)
     const res = await fetch("https://ecapp.onrender.com/api/v1/posts/postDetail", {
       method: "Post",
       body: JSON.stringify({
@@ -35,6 +37,7 @@ export default function TextPost() {
     });
     const response = await res.json();
     if (res.ok) {
+      setIsLoading(false)
       console.log(response);
     } else {
       console.log(response);
@@ -44,6 +47,7 @@ export default function TextPost() {
   return (
     <div>
       <Sidebar />
+      { isLoading && <h3 className={style.imagesUpload}>UPLOADING.....</h3> }
       <div className={style.container}>
         <textarea
           className={style.textPost}
