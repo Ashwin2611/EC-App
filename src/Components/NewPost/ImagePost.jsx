@@ -32,7 +32,7 @@ export default function ImagePost() {
     const data = new FormData();
     data.append("image", useimg[0]);
     console.log(data);
-    const res1 = await fetch("https://ecapp.onrender.com/api/v1/posts/", {
+    const res1 = await fetch("http://10.11.6.27:3000/api/v1/posts/", {
       method: "POST",
       body: data,
       headers: {
@@ -40,7 +40,7 @@ export default function ImagePost() {
       },
     });
     const res2 = await fetch(
-      "https://ecapp.onrender.com/api/v1/posts/postDetail",
+      "http://10.11.6.27:3000/api/v1/posts/postDetail",
       {
         method: "POST",
         body: JSON.stringify({
@@ -62,7 +62,7 @@ export default function ImagePost() {
     const data1 = await response[0].json();
     const data2 = await response[1].json();
     if (response[0].status === 200) {
-      isLoading(false);
+      setIsLoading(false);
       console.log(data1);
       console.log(data2);
     } else {

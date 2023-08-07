@@ -11,3 +11,8 @@
 
 }
 
+.loading{
+    position:relative;
+    left:6rem;
+    top:20rem;
+}

@@ -62,7 +62,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://ecapp.onrender.com/api/v1/posts?clubId=${clubId}`,
+        `http://10.11.6.27:3000/api/v1/posts?clubId=${clubId}`,
         {
           method: "GET",
           headers: { Authorization: `bearer ${users.token}` },
@@ -95,14 +95,15 @@ export default function Home() {
             setClubId(e.target.value);
           }}
         >
+          <option value=''>All Clubs </option>
           {users.clubs.map((club) => (
             <option value={club.clubId}>{club.clubName}</option>
           ))}
         </select>
       </div>
+       <div className={style.loading}>{ isLoading && <LoadingState/>}</div>
       <div className={style.Post}>
-        {isLoading && <LoadingState/>}
-        {!isLoading && posts && posts.map((post) => <Post posts={post} />)}
+        {!isLoading && (posts.length ? posts.map((post) => <Post posts={post} /> ): <h1 className={style.noPost}>No Post Available</h1>)}
       </div>
       {/* <Post/> */}
     </div>

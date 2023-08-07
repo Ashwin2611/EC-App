@@ -36,7 +36,7 @@ function Sidebar() {
               : `${
                   location.pathname === "/clubregistration"
                     ? styles.active
-                    : " "
+                    : `${location.pathname==="/editProfile" ? styles.active : " "}`
                 }`
           }`}
         >
@@ -100,14 +100,14 @@ function Sidebar() {
         ) : (
           ""
         )}
-        <Link
+        {/* <Link
           to="/dummy"
           className={`${styles.link} ${
             location.pathname === "/dummy" ? styles.active : " "
           } `}
         >
           dummy
-        </Link>
+        </Link> */}
         <Link to="/login" className={`${styles.link} ${styles.logout}`}>
           Logout
         </Link>

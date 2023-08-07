@@ -81,6 +81,7 @@ export function LoginPage() {
       }
     } else {
       console.log("login unsuccessful");
+      setIsLoading(false)
     }
   }
 

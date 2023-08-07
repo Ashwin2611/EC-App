@@ -44,11 +44,11 @@ export default function MemberRequest() {
       <Sidebar />
       {/* <h3>Request Page</h3> */}
       {isLoading ? (
-        <LoadingState />
+        <div className={style.loading}><LoadingState /></div>
       ) : (members.length ? (
         members.map((member) => <Requestbox member={member} />)
       ) : (
-        <h1 className={style.noUser}>No members found</h1>
+        <h1 className={style.noUser}>No Members Found</h1>
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./UserProfileEdit.module.css";
 import React, { useState } from "react";
@@ -6,44 +6,93 @@ import { useSelector } from "react-redux";
 // import profileImage from "./src/assets/PngItem_1503945.png";
 
 export default function UserProfile() {
-  const user=useSelector((state)=>state.user.value)
-  const navigate=useNavigate()
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [department, setDepartment] = useState("");
-  const [phoneNo, setPhoneNo] = useState("");
+  const user = useSelector((state) => state.user.value);
+  const navigate = useNavigate();
+  const location=useLocation();
+  const fName=location.state.firstName;
+  const lName=location.state.lastName;
+  const depart=location.state.department;
+  const phoneNumber=location.state.phoneNo;
+  const images=location.state.image
+  const [firstName, setFirstName] = useState(fName);
+  const [lastName, setLastName] = useState(lName);
+  const [department, setDepartment] = useState(depart);
+  const [phoneNo, setPhoneNo] = useState(phoneNumber);
+  // const [imageName, setImageName] = useState("");
+  const [image, setImage] = useState();
+  const [useimg, setUseimg] = useState(images);
 
-  function SubmitHandler(e) {
-    e.preventDefault()
+  function Imagehandler(e) {
+    setImage(URL.createObjectURL(e.target.files[0]));
+    setUseimg(e.target.files);
+    console.log(useimg[0].name);
+  }
+
+ async function SubmitHandler(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("image", useimg[0]);
+    console.log(data);
+    const res1 = await fetch(
+      "http://10.11.6.27:3000/api/v1/users/user/profileimage",
+      {
+        method: "PATCH",
+        body: data,
+        headers: {
+          Authorization: `bearer ${user.token}`,
+        },
+      }
+    );
+    // setImageName(useimg[0].name);
+    // console.log(imageName);
+    const res2 = await fetch(
+      "http://10.11.6.27:3000/api/v1/users/user/profileimagename",
+      {
+        method: "PATCH",
+        body: JSON.stringify({ originalname: useimg[0].name }),
+        headers: {
+          Authorization: `bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const response = await Promise.all([res1, res2]);
+    const data1 = await response[0].json();
+    const data2 = await response[1].json();
+    if (response[0].status === 200) {
+      // isLoading(false);
+      console.log(data1);
+      console.log(data2);
+    } else {
+      console.log(data1, data2);
+    }
     async function EditProfile() {
       const res = await fetch(
         "https://ecapp.onrender.com/api/v1/users/user/updateDetail",
         {
           method: "PATCH",
-          body: JSON.stringify({userDetail:{
-            firstName: firstName,
-            lastName: lastName,
-            department: department,
-            phoneNo: phoneNo,
-          }}),
+          body: JSON.stringify({
+            userDetail: {
+              firstName: firstName,
+              lastName: lastName,
+              department: department,
+              phoneNo: phoneNo,
+            },
+          }),
           headers: {
-            Authorization:
-              `bearer ${user.token}`,
+            Authorization: `bearer ${user.token}`,
             "Content-type": "application/json",
           },
         }
       );
-      if(res.ok)
-      {
-        alert("DATA EDITED SUCCESSFULLY")
-        navigate("/userprofile")
-      }
-      else
-      {
-        console.log("error")
+      if (res.ok) {
+        alert("DATA EDITED SUCCESSFULLY");
+        navigate("/userprofile");
+      } else {
+        console.log("error");
       }
     }
-    EditProfile()
+    EditProfile();
   }
 
   return (
@@ -51,23 +100,28 @@ export default function UserProfile() {
       <Sidebar />
       <center>
         <form className={style.forms} onSubmit={SubmitHandler}>
+          <label className={style.labels}>
+            ➕
+            <input type="file" name="image" onChange={Imagehandler} />
+          </label>
           <img
             className={style.userprofileimage}
-            src="./src/assets/PngItem_1503945.png"
+            src={!useimg ? "./src/assets/PngItem_1503945.png" : useimg}
             alt=""
-            onClick={() => <Photo />}
           />
           <div className={style.userdata}>
             <div className={style.fieldWrapper}>
               <input
                 className={style.inputfield}
                 type="text"
+                value={firstName}
                 placeholder="First Name"
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <input
                 className={style.inputfield}
                 type="text"
+                value={lastName}
                 placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -75,12 +129,11 @@ export default function UserProfile() {
             <div className={style.fieldWrapper}>
               <select
                 className={style.department}
+                value={department}
                 placeholder="Department"
                 onChange={(e) => setDepartment(e.target.value)}
               >
-                <option value="">
-                  Department
-                </option>
+                <option value="">Department</option>
                 <option value="CSE">CSE</option>
                 <option value="IT">IT</option>
                 <option value="ECE">ECE</option>
@@ -90,6 +143,7 @@ export default function UserProfile() {
               <input
                 className={style.inputfield}
                 type="number"
+                value={phoneNo}
                 placeholder="PhoneNo"
                 onChange={(e) => setPhoneNo(e.target.value)}
               />

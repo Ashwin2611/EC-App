@@ -36,6 +36,7 @@
   border: none;
   background-color: white;
   z-index:0;
+  object-fit: fill;
 }
 
 .userdetails {
@@ -104,4 +105,10 @@
 .but{
   text-decoration: none;
   color: black;
+}
+
+.loading{
+  position:relative;
+  left:5rem;
+  top:20rem;
 }

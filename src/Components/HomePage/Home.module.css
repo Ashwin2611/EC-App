@@ -7,15 +7,17 @@
 
 .Post {
   margin-left: 10%;
+  position:relative;
 }
 .dropdown {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
-  margin-left: 5rem;
+  /* padding: 20px; */
+  margin-left: 10rem;
   border: none;
   outline: none;
   background-color: white;
+  /* border:1px solid red; */
 }
 .loading {
   text-align: center;
@@ -23,10 +25,20 @@
 
 .dropdown > select {
   margin-top: 2rem;
-  margin-left: 2rem;
+  margin-right: 2.5rem;
   height: 2.5rem;
   border: none;
   background-color: #e4e4e4;
   padding: 10px;
   border-radius: 25px;
+  /* border:1px solid red; */
+}
+.noPost{
+  text-align: center;
+}
+
+.loading{
+  position:relative;
+  left:5rem;
+  top:15rem;
 }

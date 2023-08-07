@@ -19,6 +19,18 @@
     margin-top:3rem;
     margin-left: 15%;
   }
+
+  .labels{
+    position:relative;
+    left:26.8rem;
+    bottom:2rem;
+    font-size: 20px;
+    padding:5px;
+    border:1px solid rgb(45, 45, 45);
+    border-radius: 100%;
+    /* background-color:#c2c2c2; */
+    /* margin-left:45%; */
+  }
   .userdata {
     margin-left: 15%;
   }

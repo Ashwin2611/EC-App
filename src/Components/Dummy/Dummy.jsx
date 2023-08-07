@@ -12,7 +12,7 @@ export default function Dummy() {
   function Imagehandler(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
     setUseimg(e.target.files);
-    // console.log(useimg[0].name);
+    console.log(useimg[0].name);
   }
 
   async function SubmitHandler() {
@@ -20,7 +20,7 @@ export default function Dummy() {
     data.append("image", useimg[0]);
     console.log(data);
     const res1 = await fetch(
-      "https://ecapp.onrender.com/api/v1/users/user/profileimage",
+      "http://10.11.6.27:3000/api/v1/users/user/profileimage",
       {
         method: "PATCH",
         body: data,
@@ -29,13 +29,13 @@ export default function Dummy() {
         },
       }
     );
-    setImageName(useimg[0].name);
+    // setImageName(useimg[0].name);
     console.log(imageName);
     const res2 = await fetch(
-      "https://ecapp.onrender.com/api/v1/users/user/profileimagename",
+      "http://10.11.6.27:3000/api/v1/users/user/profileimagename",
       {
         method: "PATCH",
-        body: JSON.stringify({ originalname: imageName }),
+        body: JSON.stringify({ originalname: useimg[0].name }),
         headers: {
           Authorization: `bearer ${user.token}`,
           "Content-Type": "application/json",

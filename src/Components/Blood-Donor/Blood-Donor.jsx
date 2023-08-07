@@ -12,7 +12,7 @@ export default function BloodDonor() {
   const [isLoading,setIsLoading] =useState(false)
   const apiHandler = async () => {
     setIsLoading(true)
-    const url = `https://ecapp.onrender.com/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
+    const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
     console.log(url);
     console.log(users.token)
     const response = await fetch(url, {
@@ -20,7 +20,7 @@ export default function BloodDonor() {
       headers: {
         Authorization:
           `bearer ${users.token}`,
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
     const result = await response.json();
@@ -57,7 +57,7 @@ export default function BloodDonor() {
               setBloodGroup(e.target.value);
             }}
           >
-            <option value="">BloodGrp</option>
+            <option value="">Blood Group</option>
             <option value="B%2B">B+</option>
             <option value="B-">B-</option>
             <option value="O%2B">O+</option>
@@ -83,13 +83,13 @@ export default function BloodDonor() {
         </div>
       </>
       <div className={style.usercontainar}>
-      {isLoading ? <LoadingState/> :
+      {isLoading ?<div className={style.loading}> <LoadingState/> </div>:
         (user &&
           user.map((user) => (
             <div className={style.userdata}>
               <img
                 className={style.userimage}
-                src={"./src/assets/PngItem_1503945.png"}
+                src={user.profileName ? user.profileLink : "./src/assets/PngItem_1503945.png"}
                 alt="Image"
                 height={28}
               />
@@ -100,7 +100,7 @@ export default function BloodDonor() {
                 <div className={style.details}>
                   {/* <p className={style.depart}>{user.department}</p> */}
                   <p className={style.bloodGrp}>
-                    BloodGroup : {user.bloodGroup}
+                    Blood Group : {user.bloodGroup}
                   </p>
                 </div>
                 <div>

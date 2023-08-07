@@ -40,7 +40,8 @@ export default function MainAdmin() {
       {
         method: "POST",
         body: JSON.stringify({ approvalStatus: true }),
-        headers: { Authorization: `bearer ${users.token}` },
+        headers: { Authorization: `bearer ${users.token}`, 
+      "Content-Type":"application/json"},
       }
     );
     const res = await response.json();

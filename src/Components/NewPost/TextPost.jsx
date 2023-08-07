@@ -26,7 +26,7 @@ export default function TextPost() {
         caption: caption,
         format,
         tags: tag,
-        club: 3,
+        club: clubs*1,
         modes:mode
       }),
       headers: {
@@ -85,11 +85,11 @@ export default function TextPost() {
             <label htmlFor="modes"> only for private members</label>
             <div className={style.dropdown}>
               <select
-                value={clubs.id}
+                value={clubs.clubId}
                 onClick={(e) => setClubs(e.target.value)}
               >
                 {priviledgedClub.map((club) => (
-                  <option value={club.id} onChange={(e)=>setClubs(e.target.value)}>{club.clubName}</option>
+                  <option value={club.clubId}>{club.clubName}</option>
                 ))}
               </select>
             </div>

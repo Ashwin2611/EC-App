@@ -85,7 +85,7 @@ export default function ClubRegistration() {
     <div>
       <Sidebar />
       {isLoading ? (
-        <LoadingState />
+       <div className={style.loading}> <LoadingState /></div>
       ) : (
         <>
           <h3 className={style.name}>Club Registration</h3>
