@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./UserProfileEdit.module.css";
 import React, { useState } from "react";
@@ -148,6 +148,7 @@ export default function UserProfile() {
                 onChange={(e) => setPhoneNo(e.target.value)}
               />
             </div>
+            <div className={style.changePassword}><Link to="/changePassword">Change Password</Link></div>
             <button className={style.button}>Submit</button>
           </div>
         </form>

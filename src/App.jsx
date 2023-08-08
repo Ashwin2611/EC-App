@@ -19,6 +19,9 @@ import ImagePost from "./Components/NewPost/ImagePost";
 import Committee from "./Components/Committee/Commitee";
 import MainAdmin from "./Components/MainAdmin/MainAdmin";
 import Dummy from "./Components/Dummy/Dummy";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import ForgotPassword from "./Components/ForgetPassword/ForgotPassword";
+import ChangePassword from "./Components/UserProfile/ChangePassword";
 
 
 const route = createBrowserRouter([
@@ -100,7 +103,20 @@ const route = createBrowserRouter([
       {
         path:"/dummy",
         element:<Dummy/>
+      },
+      {
+        path:"/forgetPassword",
+        element:<ForgetPassword/>
+      },
+      {
+        path:"/forgotPassword",
+        element:<ForgotPassword/>
+      },
+      {
+        path:"/changePassword",
+        element:<ChangePassword/>
       }
+
     ],
   },
 ]);

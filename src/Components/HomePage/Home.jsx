@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Post from "../PostPage/Post";
 import Sidebar from "../Sidebar/Sidebar";
 import style from "./Home.module.css";
-import LoadingState from "../LoadingState/LoadingState"
+import LoadingState from "../LoadingState/LoadingState";
 
 const arraylist = [
   {
@@ -95,15 +95,20 @@ export default function Home() {
             setClubId(e.target.value);
           }}
         >
-          <option value=''>All Clubs </option>
+          <option value="">All Clubs </option>
           {users.clubs.map((club) => (
             <option value={club.clubId}>{club.clubName}</option>
           ))}
         </select>
       </div>
-       <div className={style.loading}>{ isLoading && <LoadingState/>}</div>
+      <div className={style.loading}>{isLoading && <LoadingState />}</div>
       <div className={style.Post}>
-        {!isLoading && (posts.length ? posts.map((post) => <Post posts={post} /> ): <h1 className={style.noPost}>No Post Available</h1>)}
+        {!isLoading &&
+          (posts.length ? (
+            posts.map((post) => <Post posts={post} />)
+          ) : (
+            <h1 className={style.noPost}>No Post Available</h1>
+          ))}
       </div>
       {/* <Post/> */}
     </div>

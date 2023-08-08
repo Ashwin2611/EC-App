@@ -85,9 +85,12 @@ export function LoginPage() {
     }
   }
 
-  const Navigate = useNavigate();
   function RouteHandler() {
-    Navigate("/signup");
+    navigate("/signup");
+  }
+
+  function ForgetPasswordHandler(){
+    navigate("/forgetPassword")
   }
 
   return (
@@ -138,6 +141,7 @@ export function LoginPage() {
               {" "}
               Create new account
             </span>
+            <p className={style.ForgetPassword} onClick={ForgetPasswordHandler}>Forget Password</p>
           </p>
           <button className={style.button} type="submit">
             Login

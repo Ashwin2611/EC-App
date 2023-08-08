@@ -216,7 +216,8 @@ export default function Post({
           className={style.commentButton}
           onClick={() => commentHandler()}
         >
-          post
+          {/* <FontAwesomeIcon icon="fa-solid fa-play" /> */}
+          POST
         </button>
       </div>
     </div>
