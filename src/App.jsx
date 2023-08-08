@@ -36,8 +36,6 @@ const route = createBrowserRouter([
         // element:<UserDetails/>
         // element:<UserProfile/>,
         // element:<ClubRegistration/>
-        // element:<BloodDonor/>,
-        
       },
       {
         path: "signup",
