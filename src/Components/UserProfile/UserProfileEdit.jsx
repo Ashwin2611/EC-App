@@ -19,8 +19,8 @@ export default function UserProfile() {
   const [department, setDepartment] = useState(depart);
   const [phoneNo, setPhoneNo] = useState(phoneNumber);
   // const [imageName, setImageName] = useState("");
-  const [image, setImage] = useState();
-  const [useimg, setUseimg] = useState(images);
+  const [image, setImage] = useState(images);
+  const [useimg, setUseimg] = useState();
 
   function Imagehandler(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
@@ -106,7 +106,7 @@ export default function UserProfile() {
           </label>
           <img
             className={style.userprofileimage}
-            src={!useimg ? "./src/assets/PngItem_1503945.png" : useimg}
+            src={!images ? "./src/assets/PngItem_1503945.png" : image}
             alt=""
           />
           <div className={style.userdata}>

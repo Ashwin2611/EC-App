@@ -77,10 +77,13 @@ export function LoginPage() {
           navigate("/home");
         }
       } else {
+        setIsLoading(false)
         setErrorPassword(result.message);
+        setErrorEmail(result.message)
       }
     } else {
       console.log("login unsuccessful");
+      errorPassword(result.message)
       setIsLoading(false)
     }
   }

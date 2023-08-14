@@ -6,6 +6,7 @@ export default function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage,setErrorMessage]=useState("");
   const [isValid, setIsValid] = useState(false);
 
   const user=useSelector((state)=>state.user.value)
@@ -30,10 +31,15 @@ export default function ChangePassword() {
               if (response.ok) {
                 console.log(res);
               } else {
+                setIsValid(false)
                 console.log("error", res);
+                setErrorMessage(res.message)
               }
         }
-   
+      
+    }
+    else{
+      setErrorMessage("New Password and Confirm Password are not same");
     }
   }
 
@@ -58,6 +64,7 @@ export default function ChangePassword() {
         placeholder="Confirm Password"
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
+      {!isValid ? <h1 className={style.errormessage}>{errorMessage}❗</h1> : " "}
       <button className={style.button} onClick={SubmitHandler}>
         Submit
       </button>

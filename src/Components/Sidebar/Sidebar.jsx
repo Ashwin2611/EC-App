@@ -42,7 +42,7 @@ function Sidebar() {
         >
           User Profile
         </Link>
-        {user.adminInClubCount ? (
+        {(user.adminInClubCount || user.committeeInClubCount )? (
           <Link
             to="/memberRequest"
             className={`${styles.link} ${
@@ -54,7 +54,7 @@ function Sidebar() {
         ) : (
           ""
         )}
-        {user.adminInClubCount ? (
+        {(user.adminInClubCount ||user.committeeInClubCount) ? (
           <Link
             to="/newPost"
             className={`${styles.link} ${
@@ -76,7 +76,7 @@ function Sidebar() {
         ) : (
           ""
         )}
-        {user.adminInClubCount ? (
+        {(user.adminInClubCount)? (
           <Link
             to="/committee"
             className={`${styles.link} ${

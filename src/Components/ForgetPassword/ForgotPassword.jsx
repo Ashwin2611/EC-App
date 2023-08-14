@@ -91,7 +91,7 @@ export default function ForgotPassword(){
         <button className={style.button} onClick={CheckPassword}>
           Submit
         </button>
-      </div>) : (!isValid ? <h1>Link Expired </h1> : "Loading.....")}
+      </div>) : (!isValid ? <h1 className={style.LinkExpired}>Link Expired </h1> : "Loading.....")}
       </>
     )
 }

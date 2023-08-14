@@ -41,8 +41,8 @@ export default function Requestbox({
             <p>Department : {`${department} Club:${clubName}`}</p>
             {/* <p>ClubName: {clubName}</p> */}
             <div className={style.decide}>
-              <button onClick={() => StatusHandler(true)}>✔️ Accept</button>
-              <button onClick={() => StatusHandler(false)}>❌ Reject</button>
+              <button  className={style.button} onClick={() => StatusHandler(true)}>✔️ Accept</button>
+              <button  className={style.button} onClick={() => StatusHandler(false)}>❌ Reject</button>
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function ClubRegistration() {
       //   (club) => !userClubList.includes(club.clubName)
       // );
       setClubs(userNotJoinedClubList);
-      // setIsClub(true);
+      setIsClub(true);
       // }
     }
     Club();
