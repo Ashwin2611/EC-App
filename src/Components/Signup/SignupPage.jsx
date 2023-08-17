@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import style from "./SignUp.module.css";
+import style from "./Signup.module.css";
 import { useState } from "react";
-import LoadingState from "../LoadingState/LoadingState"
+import LoadingState from "../LoadingState/LoadingState";
 export default function SignUpPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ export default function SignUpPage() {
   const joinInYear = email.slice(0, 2);
   const currentOfYear = new Date().getFullYear() % 100;
   const yearofStudy = currentOfYear - joinInYear + 1;
-  const [isLoading,setIsLoading]=useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSignUp(e) {
     e.preventDefault();
@@ -27,7 +27,7 @@ export default function SignUpPage() {
       setError("");
     }
     if (isValid) {
-      setIsLoading(true)
+      setIsLoading(true);
       const res = await fetch(
         "https://ecapp.onrender.com/api/v1/auth/signupemail",
         {
@@ -39,11 +39,11 @@ export default function SignUpPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
-        setIsLoading(false)
-        navigate("/OTPVerification",{
-          state:{
-            email: email
-          }
+        setIsLoading(false);
+        navigate("/OTPVerification", {
+          state: {
+            email: email,
+          },
         });
       } else {
         setError(result.message);
@@ -55,26 +55,27 @@ export default function SignUpPage() {
   }
 
   return (
-    <>{isLoading && <LoadingState/>}
-    <form className={style.form} onSubmit={handleSignUp}>
-      <h1 className={style.title}>Register</h1>
-      <input
-        className={style.inputfield}
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      {error && <p className={style.error}>{error}</p>}
-      <button className={style.button} type="submit">
-        Submit
-      </button>
-      <p className={style.para}>
-        Already have an account?
-        <span className={style.span} onClick={routeHandler}>
-          login
-        </span>
-      </p>
-    </form>
+    <>
+      {isLoading && <LoadingState />}
+      <form className={style.form} onSubmit={handleSignUp}>
+        <h1 className={style.title}>Register</h1>
+        <input
+          className={style.inputfield}
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {error && <p className={style.error}>{error}</p>}
+        <button className={style.button} type="submit">
+          Submit
+        </button>
+        <p className={style.para}>
+          Already have an account?
+          <span className={style.span} onClick={routeHandler}>
+            login
+          </span>
+        </p>
+      </form>
     </>
   );
 }
