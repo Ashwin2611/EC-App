@@ -6,15 +6,6 @@
   gap: 10rem;
 }
 
-/* .container >input{
-    width: 28rem;
-    height: 3rem;
-    margin-top:2rem;
-    border:none;
-    padding-left:15px;
-    background-color: #e4e4e4;
-    border-radius: 25px;
-} */
 
 .commitTitle {
   font-size: 28px;
@@ -54,4 +45,94 @@
   background-color: #e4e4e4;
   padding:15px;
   border-radius: 20px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    margin-top:5rem;
+    gap: 7rem; 
+  }
+  .commitTitle {
+    font-size: 24px; 
+    margin-left: 9%; 
+  }
+  .mail > input {
+    width: 30rem; 
+    margin-left: 15rem; 
+  }
+
+}
+
+@media (max-width: 992px) {
+  .container {
+    margin-top:5rem;
+    gap: 2rem; 
+  }
+  .commitTitle {
+    font-size: 24px; 
+    margin-left: 13rem; 
+    margin-bottom:5rem;
+  }
+  .mail > input {
+    width: 25rem; 
+    margin-left: 15rem; 
+  }
+
+  .submitButton {
+    width: 8rem;
+    margin-left: 22%;
+    margin-top:10%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top:5rem;
+    gap: 2rem; 
+    position:relative;
+    right:5rem;
+    margin-bottom:5rem;
+  }
+  .commitTitle {
+    font-size: 24px; 
+    margin-left: 17%; 
+  }
+  .mail > input {
+    width: 30rem; 
+    margin-left: 10rem; 
+  }
+
+  .submitButton {
+    width: 8rem;
+    margin-left: 18%;
+    margin-top:10%;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .container {
+    margin-top:5rem;
+    position:relative;
+    right:5rem;
+    margin-bottom:5rem;
+    margin-left:1rem;
+    margin-right: 1rem;
+  }
+  .commitTitle {
+    font-size: 22px; 
+    margin-left: 22%; 
+  }
+  .mail > input {
+    width: 22rem; 
+  }
+
+  .submitButton {
+    width: 8rem;
+    margin-left: 25%;
+    margin-top:10%;
+  }
+
 }

@@ -12,7 +12,7 @@ export default function BloodDonor() {
   const [isLoading,setIsLoading] =useState(false)
   const apiHandler = async () => {
     setIsLoading(true)
-    const url = `http://10.11.6.27:3000/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
+    const url = `http://192.168.176.240:3000/api/v1/users/donor?firstName=${name}&bloodGroup=${bloodGroup}`;
     console.log(url);
     console.log(users.token)
     const response = await fetch(url, {

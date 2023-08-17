@@ -11,6 +11,7 @@
     width:35rem;
     background-color: #8cc2bc;
     border-radius: 30px;
+    margin-bottom:3rem;
     /* #52a79e */
   }
   
@@ -26,6 +27,7 @@
     outline: none;
     padding-left:15px;
     padding-top:15px;
+    display:flex;
   }
 
   .caption {
@@ -103,4 +105,92 @@
     position:relative;
     top:15rem;
     color:#8cc2bc
+  }
+
+  @media (max-width: 1200px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left:37%;
+      margin-top:3%;
+      /* border:1px solid red; */
+      height: 50rem;
+      width:35rem;
+      background-color: #8cc2bc;
+      border-radius: 30px;
+      /* #52a79e */
+    }
+  }
+  
+  @media (max-width: 992px) {
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left:35%;
+      margin-right:2.5rem;
+      margin-top:3%;
+      /* border:1px solid red; */
+      height: 50rem;
+      width:auto;
+      background-color: #8cc2bc;
+      border-radius: 30px;
+      /* #52a79e */
+    }
+    
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left:10%;
+      margin-bottom:3rem;
+      margin-right:5rem;
+      margin-top:3%;
+      /* border:1px solid red; */
+      height: 50rem;
+      width:auto;
+      background-color: #8cc2bc;
+      border-radius: 30px;
+      /* #52a79e */
+    }
+    
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left:1rem;
+      margin-bottom:3rem;
+      margin-right:1rem;
+      margin-top:3%;
+      /* border:1px solid red; */
+      height: 50rem;
+      width:auto;
+      background-color: #8cc2bc;
+      border-radius: 30px;
+      /* #52a79e */
+    }
+    .tag{
+      width: 80%;
+      padding: 8px;
+      font-size: 16px;
+      margin-top:8%;
+      border: 1px solid #ccc;
+      resize: none;
+      background-color:#e2fffc;
+      border-radius: 25px;
+      outline: none;
+      padding-top:15px;
+      padding-left:15px;
+      margin-left:3rem;
+  
+  }
+  
   }
