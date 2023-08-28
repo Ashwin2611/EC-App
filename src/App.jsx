@@ -22,6 +22,7 @@ import Dummy from "./Components/Dummy/Dummy";
 import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import ForgotPassword from "./Components/ForgetPassword/ForgotPassword";
 import ChangePassword from "./Components/UserProfile/ChangePassword";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 
 const route = createBrowserRouter([
@@ -115,6 +116,10 @@ const route = createBrowserRouter([
       {
         path:"/changePassword",
         element:<ChangePassword/>
+      },
+      {
+        path:"*",
+        element:<ErrorPage/>
       }
 
     ],
