@@ -33,12 +33,14 @@ export function LoginPage() {
       isValid = false;
     } else {
       setErrorEmail("");
+      // isValid=false;
     }
     if (!password) {
       setErrorPassword("Please Enter the Correct Password");
       isValid = false;
     } else {
       setErrorPassword("");
+      // isValid=false;
     }
     if (isValid) {
       setIsLoading(true)

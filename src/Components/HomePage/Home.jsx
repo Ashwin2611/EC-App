@@ -62,7 +62,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://192.168.176.240:3000/api/v1/posts?clubId=${clubId}`,
+        `https://ecapp.onrender.com/api/v1/posts?clubId=${clubId}`,
         {
           method: "GET",
           headers: { Authorization: `bearer ${users.token}` },

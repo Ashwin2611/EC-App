@@ -83,7 +83,6 @@ export default function Post({
       "https://ecapp.onrender.com/api/v1/posts/comments",
       {
         method: "POST",
-
         body: JSON.stringify({
           postId,
           comment,

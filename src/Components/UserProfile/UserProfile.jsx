@@ -16,7 +16,7 @@ export default function UserProfile() {
   // useEffect(()=>{
   async function UserData() {
     setIsLoading(true);
-    const res = await fetch("http://10.11.6.27:3000/api/v1/users/user", {
+    const res = await fetch("https://ecapp.onrender.com/api/v1/users/user", {
       method: "GET",
       headers: {
         Authorization: `bearer ${users.token}`,
