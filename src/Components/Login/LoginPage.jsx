@@ -5,8 +5,9 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import style from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { login } from "../features/Store";
-import { useDispatch } from "react-redux";
-import LoadingState from "../LoadingState/LoadingState";
+import { useDispatch} from "react-redux";
+import LoadingState from "../LoadingState/LoadingState"
+
 
 // import FontAwesome from "./FontAwesome";
 export function LoginPage() {
@@ -18,7 +19,7 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading,setIsLoading]=useState(false)
   const navigate = useNavigate();
 
   async function SubmitHandler(e) {
@@ -51,7 +52,7 @@ export function LoginPage() {
       const result = await res.json();
       console.log(res, result);
       if (res.ok) {
-        setIsLoading(false);
+        // setIsLoading(false)
         // console.log(result)
         console.log("login successful");
         console.log(result.data.adminInClub);
@@ -61,29 +62,31 @@ export function LoginPage() {
             token: result.token,
             adminInClub: result.data.adminInClub,
             adminInClubCount: result.data.adminInClubCount,
-            committeeInClub: result.data.committeeInClub,
+            committeeInClub:result.data.committeeInClub,
             committeeInClubCount: result.data.committeeInClubCount,
-            memberInCount: result.data.memberInCount,
-            memberInClubCount: result.data.memberInClubCount,
-            clubs: result.data.clubs,
-            admin: result.data.user.admin,
+            memberInCount:result.data.memberInCount,
+            memberInClubCount:result.data.memberInClubCount,
+            clubs:result.data.clubs,
+            admin:result.data.user.admin,
           })
         );
-        console.log(result.data.user.admin);
-        if (result.data.user.admin) {
-          navigate("/mainadmin");
-        } else {
+        console.log(result.data.user.admin)
+        if(result.data.user.admin)
+        {
+          navigate("/mainadmin")
+        }
+        else{
           navigate("/home");
         }
       } else {
-        setIsLoading(false);
+        setIsLoading(false)
         setErrorPassword(result.message);
-        setErrorEmail(result.message);
+        setErrorEmail(result.message)
       }
     } else {
       console.log("login unsuccessful");
-      errorPassword(result.message);
-      setIsLoading(false);
+      errorPassword(result.message)
+      setIsLoading(false)
     }
   }
 
@@ -91,74 +94,65 @@ export function LoginPage() {
     navigate("/signup");
   }
 
-  function ForgetPasswordHandler() {
-    navigate("/forgetPassword");
+  function ForgetPasswordHandler(){
+    navigate("/forgetPassword")
   }
 
   return (
     <div className={style.container}>
-      {isLoading ? (
-        <LoadingState />
-      ) : (
-        <center>
-          <form className={style.form} onSubmit={SubmitHandler}>
-            <h1 className={style.title}>Login</h1>
-            <input
-              className={style.inputfield}
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errorEmail && (
-              <p className={style.erroremail}>
-                {errorEmail}
-                <FontAwesomeIcon
-                  icon={faCircleInfo}
-                  className={style.info}
-                  data-tip={errorEmail}
-                />
-              </p>
-            )}
-
-            <input
-              className={style.inputfield}
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errorPassword && (
-              <p className={style.error}>
-                {errorPassword}
-                <FontAwesomeIcon
-                  icon={faCircleInfo}
-                  className={style.info}
-                  data-tip={errorPassword}
-                />
-              </p>
-            )}
-            {/* <ReactTooltip /> */}
-            {/* {errorEmail} */}
-            <p className={style.para}>
-              Don't have an account?{" "}
-              <span className={style.span} onClick={RouteHandler}>
-                {" "}
-                Create new account
-              </span>
-              <p
-                className={style.ForgetPassword}
-                onClick={ForgetPasswordHandler}
-              >
-                Forget Password
-              </p>
+      {isLoading ? <LoadingState/> :<center>
+        <form className={style.form} onSubmit={SubmitHandler}>
+          <h1 className={style.title}>Login</h1>
+          <input
+            className={style.inputfield}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errorEmail && (
+            <p className={style.erroremail}>
+              {errorEmail}
+              <FontAwesomeIcon
+                icon={faCircleInfo}
+                className={style.info}
+                data-tip={errorEmail}
+              />
             </p>
-            <button className={style.button} type="submit">
-              Login
-            </button>
-          </form>
-        </center>
-      )}
+          )}
+
+          <input
+            className={style.inputfield}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errorPassword && (
+            <p className={style.error}>
+              {errorPassword}
+              <FontAwesomeIcon
+                icon={faCircleInfo}
+                className={style.info}
+                data-tip={errorPassword}
+              />
+            </p>
+          )}
+          {/* <ReactTooltip /> */}
+          {/* {errorEmail} */}
+          <p className={style.para}>
+            Don't have an account?{" "}
+            <span className={style.span} onClick={RouteHandler}>
+              {" "}
+              Create new account
+            </span>
+            <p className={style.ForgetPassword} onClick={ForgetPasswordHandler}>Forget Password</p>
+          </p>
+          <button className={style.button} type="submit">
+            Login
+          </button>
+        </form>
+      </center>}
     </div>
   );
 }
