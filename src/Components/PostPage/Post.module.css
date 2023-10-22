@@ -315,4 +315,7 @@
     border-radius: 10px;
     /* object-fit: ficll; */
   }
+  .likes-count{
+    margin-top:20px;
+  }
 }

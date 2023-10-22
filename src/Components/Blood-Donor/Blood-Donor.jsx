@@ -87,15 +87,17 @@ export default function BloodDonor() {
         (user &&
           user.map((user) => (
             <div className={style.userdata}>
-              <img
-                className={style.userimage}
-                src={user.profileName ? user.profileLink : "./src/assets/PngItem_1503945.png"}
-                alt="Image"
-                height={28}
-              />
-                <h3 className={style.name}>
-                  {user.firstName} {user.lastName}
-                </h3>
+            {/* <div className={style.userimgName}> */}
+                <img
+                  className={style.userimage}
+                  src={user.profileName ? user.profileLink : "./src/assets/PngItem_1503945.png"}
+                  alt="Image"
+                  height={28}
+                />
+                  <h3 className={style.name}>
+                    {user.firstName} {user.lastName}
+                  </h3>
+                {/* </div> */}
               <div className={style.Userdetails}>
                 <div className={style.details}>
                   {/* <p className={style.depart}>{user.department}</p> */}

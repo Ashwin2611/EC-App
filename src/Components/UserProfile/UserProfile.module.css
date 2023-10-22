@@ -5,25 +5,24 @@
   font-family: Google Sans, Helvetica Neue, sans-serif;
 }
 
-
 .userdata {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top:5rem;
+  margin-top: 5rem;
   margin-left: 32.5rem;
   width: 50%;
-  background-color:  #a4d8d2;
+  background-color: #a4d8d2;
   border-radius: 30px;
-  padding-bottom:25px;
+  padding-bottom: 25px;
   /* border:1px solid red; */
 }
-.userprofile{
-    background: none;
+.userprofile {
+  background: none;
 }
-.userprofile{
+.userprofile {
   margin-top: 1.5rem;
-  margin-left:35%;
+  margin-left: 35%;
   background: none;
   background-color: transparent;
 }
@@ -35,7 +34,7 @@
   margin: 0;
   border: none;
   background-color: white;
-  z-index:0;
+  z-index: 0;
   object-fit: fill;
 }
 
@@ -49,38 +48,37 @@
   align-items: flex-start;
   margin-top: 5%;
   /* border:1px solid red; */
-  margin-left:19%;
+  margin-left: 19%;
   /* padding-right:50px; */
 }
-.club{
+.club {
   font-size: 20px;
 }
-.clubs{
-  margin-top:2rem;
-  margin-left:13rem;
-  display:flex;
+.clubs {
+  margin-top: 2rem;
+  margin-left: 13rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap:17%;
-
+  gap: 17%;
 }
-.details{
-  display:flex;
+.details {
+  display: flex;
   flex-direction: column;
 }
 
-.details > label{
+.details > label {
   font-size: 20px;
   line-height: 45px;
 }
 
-.data > h3{
+.data > h3 {
   font-size: 20px;
   line-height: 45px;
 }
 
 .register {
-  margin-top:10px;
+  margin-top: 10px;
   margin-left: 0px;
   text-decoration: none;
   /* color: black; */
@@ -100,15 +98,212 @@
   font-size: 18px;
   margin-bottom: 3%;
   text-decoration: none;
-  margin-left:52%;
+  margin-left: 52%;
 }
-.but{
+.but {
   text-decoration: none;
   color: black;
 }
 
-.loading{
-  position:relative;
-  left:5rem;
-  top:20rem;
+.loading {
+  position: relative;
+  left: 5rem;
+  top: 20rem;
 }
+
+/* Default styles for screens larger than 1200px */
+@media (max-width: 1385px) {
+  .userdata {
+    /* Your existing styles */
+    padding-right: 8rem;
+    margin-left: 30rem;
+  }
+  .clubs {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+  }
+  .register {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+  }
+  .userdetails {
+    margin-left: 15%;
+  }
+  .userprofileimage {
+    display: flex;
+    justify-content: center;
+    margin-left: 2.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .userdata {
+    /* Your existing styles */
+    padding-right: 35%;
+    width: 57%;
+    margin-left: 24rem;
+  }
+  .userprofileimage {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    margin-left: 7rem;
+  }
+  .clubs {
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    font-size: 14px;
+  }
+  .register {
+    display: flex;
+    justify-content: center;
+    margin-left: 27%;
+    font-size: 18px;
+  }
+  .details > label {
+    font-size: 16px;
+    margin-left: 0px;
+  }
+  .data > h3 {
+    font-size: 16px;
+  }
+  .userdetails {
+    display: flex;
+    justify-content: center;
+    margin-left: 45%;
+  }
+
+  /* Add other styles for screens up to 1200px */
+}
+
+@media (max-width: 992px) {
+  .userdata {
+    /* Your existing styles */
+    padding-right: 35%;
+    width: 65%;
+    margin-left: 18rem;
+  }
+  .userprofileimage {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    margin-left: 7rem;
+  }
+  .clubs {
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    font-size: 14px;
+  }
+  .register {
+    display: flex;
+    justify-content: center;
+    margin-left: 27%;
+    font-size: 18px;
+  }
+  .details > label {
+    font-size: 16px;
+    margin-right: -50px;
+  }
+  .data > h3 {
+    font-size: 16px;
+  }
+  .userdetails {
+    display: flex;
+    justify-content: center;
+    margin-left: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .userdata {
+    margin: 5rem auto; /* Center the element horizontally */
+    width: 85%; /* Adjust width for smaller screens */
+  }
+
+  .userprofile {
+    margin-left: 5%; /* Adjust margin for smaller screens */
+  }
+
+  .userprofileimage {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    margin-left: 9rem;
+  }
+  .userdetails {
+    margin-left: 5%; /* Adjust margin for smaller screens */
+  }
+  .details > label {
+    font-size: 16px;
+    margin-left: 70px;
+  }
+
+  .clubs {
+    margin-left: -8%;
+    margin-bottom: 5%;
+  }
+
+  .button {
+    margin-left: 35%; /* Adjust margin for smaller screens */
+  }
+  /* .clubs{
+    display: flex;
+    justify-content: center;
+    margin-left:25%;
+    font-size: 14px;
+ } */
+  /* .register{
+    display: flex;
+    justify-content: center;
+    margin-left:27%;
+    font-size:18px;
+ } */
+
+  /* Add other styles for screens up to 768px */
+}
+
+@media (max-width: 576px) {
+  .userdata {
+    margin: 2rem auto; /* Center the element horizontally */
+    width: 90%; /* Adjust width for smaller screens */
+  }
+
+  .userprofile {
+    margin-left: 2%; /* Adjust margin for smaller screens */
+  }
+
+  .userdetails {
+    margin-left: 2%; /* Adjust margin for smaller screens */
+  }
+
+  .clubs {
+    margin-left: 0%; /* Adjust margin for smaller screens */
+  }
+  .details > label {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  /* .clubs{
+  display: flex;
+  justify-content: center;
+  margin-left:25%;
+  font-size: 14px;
+} */
+  /* .register{
+  display: flex;
+  justify-content: center;
+  margin-left:27%;
+  font-size:18px;
+} */
+
+  /* Add other styles for screens up to 576px */
+}
+
+/* Add more media queries as needed for specific screen sizes */
