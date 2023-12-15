@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import style from "./Post.module.css";
 import LargeMessage from "./LargeMessage";
 import { useState } from "react";
-
+import hearts from "./../../assets/heart.png";
+import colorlessheart from "./../../assets/colorlessHeart.png";
+import commentimg from "./../../assets/comment.png";
 import Messages from "./Messages";
 import { useSelector } from "react-redux";
 
@@ -181,9 +183,9 @@ export default function Post({
         <div className={style["post-actions"]}>
           <span className={style["heart"]} onClick={() => handler()}>
             {heart ? (
-              <img src="./src/assets/heart.png" height={28} />
+              <img src={hearts} height={28} />
             ) : (
-              <img src="./src/assets/colorlessHeart.png" height={30} />
+              <img src={colorlessheart} height={30} />
             )}
           </span>
 
@@ -193,7 +195,7 @@ export default function Post({
                 showComments &&
                 (format === "image" ? style.active : style.textactive)
               }
-              src="./src/assets/comment.png"
+              src={commentimg}
               height={30}
               onClick={() => setShowComments((show) => !show)}
             />
