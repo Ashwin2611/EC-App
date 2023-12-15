@@ -44,7 +44,6 @@
   justify-content: center;
   align-items: center;
   gap: 12rem;
-  justify-content: center;
   align-items: flex-start;
   margin-top: 5%;
   /* border:1px solid red; */
@@ -280,29 +279,35 @@
   }
 
   .userdetails {
-    margin-left: 2%; /* Adjust margin for smaller screens */
+    display:flex;
+    justify-content: center;
+    margin-left: 5%; 
+    gap:8rem;
   }
 
   .clubs {
-    margin-left: 0%; /* Adjust margin for smaller screens */
+    margin-left: 0%; 
+    gap: 1%;
   }
   .details > label {
     font-size: 16px;
     margin-left: 5px;
   }
-  /* .clubs{
-  display: flex;
-  justify-content: center;
-  margin-left:25%;
-  font-size: 14px;
-} */
-  /* .register{
-  display: flex;
-  justify-content: center;
-  margin-left:27%;
+  .userprofileimage{
+    height: 150px;
+    width: 150px;
+    margin-left: 7rem;
+  }
+  .club{
+  font-size: 18px;
+  margin-top:1%;
+}
+  .register{
   font-size:18px;
-} */
-
+}
+.button{
+  margin-left: 27%;
+}
   /* Add other styles for screens up to 576px */
 }
 
