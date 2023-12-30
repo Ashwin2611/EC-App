@@ -1,4 +1,5 @@
 import style from "./Messages.module.css";
+// import 
 export default function Messages({ msg }) {
   console.log(msg.comment);
   return (

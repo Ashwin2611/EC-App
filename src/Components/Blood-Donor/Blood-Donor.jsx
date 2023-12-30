@@ -3,6 +3,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import style from "./Blood-Donor.module.css";
 import { useSelector } from "react-redux";
 import LoadingState from "../LoadingState/LoadingState"
+import profileImage from '../../assets/PngItem_1503945.png'
 export default function BloodDonor() {
   const users=useSelector((state)=>state.user.value)
   const [bloodGroup, setBloodGroup] = useState("");
@@ -90,7 +91,7 @@ export default function BloodDonor() {
             {/* <div className={style.userimgName}> */}
                 <img
                   className={style.userimage}
-                  src={user.profileName ? user.profileLink : "./src/assets/PngItem_1503945.png"}
+                  src={user.profileName ? user.profileLink : profileImage}
                   alt="Image"
                   height={28}
                 />
