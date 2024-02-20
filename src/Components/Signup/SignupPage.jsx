@@ -8,7 +8,9 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
   const joinInYear = email.slice(0, 2);
   const currentOfYear = new Date().getFullYear() % 100;
-  const yearofStudy = currentOfYear - joinInYear + 1;
+  console.log(currentOfYear);
+  const yearofStudy = currentOfYear - joinInYear;
+  console.log(yearofStudy);
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleSignUp(e) {
@@ -20,7 +22,7 @@ export default function SignUpPage() {
     } else if (!email.endsWith("@nec.edu.in")) {
       setError("Please Enter Your College Email");
       isValid = false;
-    } else if (yearofStudy > 4) {
+    } else if (yearofStudy > 4 && yearofStudy < 0) {
       setError("You Are Not A Current Batch Student");
       isValid = false;
     } else {
