@@ -20,18 +20,22 @@ export default function UserProfile() {
   const [phoneNo, setPhoneNo] = useState(phoneNumber);
   // const [imageName, setImageName] = useState("");
   const [image, setImage] = useState(images);
-  const [useimg, setUseimg] = useState();
+  const [useimg, setUseimg] = useState(images);
 
   function Imagehandler(e) {
-    setImage(URL.createObjectURL(e.target.files[0]));
-    setUseimg(e.target.files);
-    console.log(useimg[0].name);
+    if (URL.createObjectURL(e.target.files[0]) !== null) {
+      setImage(URL.createObjectURL(e.target.files[0]));
+      setUseimg(e.target.files);
+      console.log(useimg[0].name);
+    }
+    console.log(image);
   }
 
   async function SubmitHandler(e) {
     e.preventDefault();
     const data = new FormData();
     data.append("image", useimg[0]);
+    // console.log(useimg[0])
     console.log(data);
     const res1 = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user/profileimage",
@@ -43,10 +47,11 @@ export default function UserProfile() {
         },
       }
     );
+    console.log(data)
     // setImageName(useimg[0].name);
-    // console.log(imageName);
+    console.log(useimg[0].name);
     const res2 = await fetch(
-      "http://10.11.6.27:3000/api/v1/users/user/profileimagename",
+      "https://ecapp.onrender.com/api/v1/users/user/profileimagename",
       {
         method: "PATCH",
         body: JSON.stringify({ originalname: useimg[0].name }),
@@ -151,7 +156,9 @@ export default function UserProfile() {
             <div className={style.changePassword}>
               <Link to="/changePassword">Change Password</Link>
             </div>
-            <button className={style.button}>Submit</button>
+            <button className={style.button} onClick={SubmitHandler}>
+              Submit
+            </button>
           </div>
         </form>
       </center>
