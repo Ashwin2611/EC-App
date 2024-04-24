@@ -27,7 +27,7 @@ export default function UserProfile() {
     try {
       if (res.ok) {
         setIsLoading(false);
-        console.log(response.data);
+        console.log(response.data.user);
         // await Promise.all()
         setUser(response.data.user);
         if (user.length > 0) {
@@ -52,7 +52,7 @@ export default function UserProfile() {
         lastName:user.lastName,
         department:user.department,
         phoneNo:user.phoneNo,
-        image:user.profileLink
+        image:user
       }
     });
   }

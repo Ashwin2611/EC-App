@@ -19,24 +19,33 @@ export default function UserProfile() {
   const [department, setDepartment] = useState(depart);
   const [phoneNo, setPhoneNo] = useState(phoneNumber);
   // const [imageName, setImageName] = useState("");
-  const [image, setImage] = useState(images);
+  const [image, setImage] = useState(images.profileLink);
   const [useimg, setUseimg] = useState(images);
+  const [changeImg,setChangeImage]=useState(false)
+  const [imageName,setImageName]=useState(images.profileName)
+
 
   function Imagehandler(e) {
-    if (URL.createObjectURL(e.target.files[0]) !== null) {
-      setImage(URL.createObjectURL(e.target.files[0]));
-      setUseimg(e.target.files);
-      console.log(useimg[0].name);
-    }
+    setImage(URL.createObjectURL(e.target.files[0]));
+    setUseimg(e.target.files);
+    console.log(useimg[0].name);
+    setChangeImage(true)
     console.log(image);
   }
 
   async function SubmitHandler(e) {
     e.preventDefault();
     const data = new FormData();
-    data.append("image", useimg[0]);
-    // console.log(useimg[0])
-    console.log(data);
+    if(changeImg)
+    {
+      data.append("image", useimg[0]);
+      setImageName(useimg[0].name)
+    }
+    else
+    {
+      data.append("image",useimg.profileLink)
+    }
+    console.log(useimg);
     const res1 = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user/profileimage",
       {
@@ -49,12 +58,12 @@ export default function UserProfile() {
     );
     console.log(data)
     // setImageName(useimg[0].name);
-    console.log(useimg[0].name);
+    console.log(imageName);
     const res2 = await fetch(
       "https://ecapp.onrender.com/api/v1/users/user/profileimagename",
       {
         method: "PATCH",
-        body: JSON.stringify({ originalname: useimg[0].name }),
+        body: JSON.stringify({ originalname: imageName}),
         headers: {
           Authorization: `bearer ${user.token}`,
           "Content-Type": "application/json",
