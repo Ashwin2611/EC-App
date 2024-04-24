@@ -8,12 +8,12 @@ import { useSelector } from "react-redux";
 export default function UserProfile() {
   const user = useSelector((state) => state.user.value);
   const navigate = useNavigate();
-  const location=useLocation();
-  const fName=location.state.firstName;
-  const lName=location.state.lastName;
-  const depart=location.state.department;
-  const phoneNumber=location.state.phoneNo;
-  const images=location.state.image
+  const location = useLocation();
+  const fName = location.state.firstName;
+  const lName = location.state.lastName;
+  const depart = location.state.department;
+  const phoneNumber = location.state.phoneNo;
+  const images = location.state.image;
   const [firstName, setFirstName] = useState(fName);
   const [lastName, setLastName] = useState(lName);
   const [department, setDepartment] = useState(depart);
@@ -28,13 +28,13 @@ export default function UserProfile() {
     console.log(useimg[0].name);
   }
 
- async function SubmitHandler(e) {
+  async function SubmitHandler(e) {
     e.preventDefault();
     const data = new FormData();
     data.append("image", useimg[0]);
     console.log(data);
     const res1 = await fetch(
-      "http://10.11.6.27:3000/api/v1/users/user/profileimage",
+      "https://ecapp.onrender.com/api/v1/users/user/profileimage",
       {
         method: "PATCH",
         body: data,
@@ -148,7 +148,9 @@ export default function UserProfile() {
                 onChange={(e) => setPhoneNo(e.target.value)}
               />
             </div>
-            <div className={style.changePassword}><Link to="/changePassword">Change Password</Link></div>
+            <div className={style.changePassword}>
+              <Link to="/changePassword">Change Password</Link>
+            </div>
             <button className={style.button}>Submit</button>
           </div>
         </form>
