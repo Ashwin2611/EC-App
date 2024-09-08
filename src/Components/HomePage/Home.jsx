@@ -90,9 +90,8 @@ export default function Home() {
       <Sidebar />
       <div className={style.dropdown}>
         <select
-          value={clubId}
           onClick={(e) => {
-            setClubId(e.target.value);
+            return setClubId(e.target.value);
           }}
         >
           <option value="">All Clubs </option>
